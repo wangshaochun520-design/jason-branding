@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王紹鈞 - Cloud AI & Data Intelligence Engineer [v1995]</title>
+    <!-- 引入 Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* ---------------------------------------------------- */
+        /* 1. 定義復古主題色變數 (Retro Theme Colors) */
+        /* ---------------------------------------------------- */
+        :root {
+            --retro-bg: #22303c; /* 深藍灰背景 (類似 DOS/早期 GUI) */
+            --retro-text: #e0e7c8; /* 淺米色/紙張色 (主要文字) */
+            --retro-accent: #009999; /* 復古青綠色 (強調色/標題) */
+            --retro-shadow: #141c24; /* 深陰影 (用於 3D 浮雕) */
+            --retro-monitor: #f17849; /* 琥珀色/橙色 (螢幕光暈) */
+        }
+
+        /* ---------------------------------------------------- */
+        /* 2. CRT 掃描線特效 (Scanlines) */
+        /* ---------------------------------------------------- */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            /* 模擬水平掃描線 */
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            z-index: 100;
+            opacity: 0.2; /* 掃描線強度 */
+        }
+
+        /* CRT 螢幕邊框光暈 (CRT Screen Glow) */
+        .crt-screen-glow {
+            border: 3px solid var(--retro-accent);
+            box-shadow: 0 0 10px rgba(241, 120, 73, 0.5); /* 琥珀色光暈 */
+        }
+        
+        /* ---------------------------------------------------- */
+        /* 3. 打字機效果 CSS (Typewriter Effect) */
+        /* ---------------------------------------------------- */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--retro-accent); }
+        }
+        .typing-effect {
+            overflow: hidden; 
+            border-right: .15em solid var(--retro-accent); /* 模擬終端機光標 */
+            white-space: nowrap; 
+            margin: 0 auto; 
+            letter-spacing: .05em; 
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+
+        /* ---------------------------------------------------- */
+        /* 4. 3D 浮雕按鈕樣式 (Retro Beveled Button) */
+        /* ---------------------------------------------------- */
+        .retro-button {
+            background-color: #c0c0c0; /* 經典淺灰底 */
+            color: #000000;
+            border: 1px solid #000000;
+            /* 模擬 3D 斜角效果 */
+            box-shadow: 
+                inset -2px -2px 0 0 #808080, /* 底部陰影 */
+                inset 2px 2px 0 0 #ffffff;  /* 頂部亮光 */
+            transition: all 0.1s;
+        }
+        /* 按下或 Hover 時的凹陷效果 */
+        .retro-button:hover, .retro-button:active {
+            box-shadow: 
+                inset -1px -1px 0 0 #ffffff, /* 頂部陰影變淺 */
+                inset 1px 1px 0 0 #808080;  /* 底部亮光變深 */
+            transform: translate(1px, 1px);
+        }
+    </style>
+</head>
+
+<body class="bg-[var(--retro-bg)] text-[var(--retro-text)] font-mono scroll-smooth">
+
+    <!-- 移除代碼雨背景 -->
+
+    <!-- 導航列 (Navigation) -->
+    <nav class="sticky top-0 z-50 bg-[#c0c0c0] bg-opacity-95 shadow-lg border-b-4 border-[var(--retro-accent)] text-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <!-- 模擬早期標題區塊 -->
+                    <span class="text-2xl font-bold bg-[var(--retro-accent)] text-white p-1 shadow-md">
+                        [ SYSTEM ] SHAOJUN.EXE
+                    </span>
+                </div>
+                <div class="flex space-x-4 text-sm font-bold">
+                    <a href="#home" class="p-2 hover:bg-[var(--retro-accent)] hover:text-white transition duration-150">首頁</a>
+                    <a href="#about" class="p-2 hover:bg-[var(--retro-accent)] hover:text-white transition duration-150">關於紹鈞</a>
+                    <a href="#solutions" class="p-2 hover:bg-[var(--retro-accent)] hover:text-white transition duration-150">AI 解決方案</a>
+                    <a href="#portfolio" class="p-2 hover:bg-[var(--retro-accent)] hover:text-white transition duration-150">實戰案例</a>
+                    <!-- 預約諮詢按鈕改用復古 3D 樣式 -->
+                    <a href="#contact" class="px-3 py-1 retro-button border-t-2 border-r-2">預約諮詢</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主內容容器 -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+        <!-- 區塊 1: 首頁標題與介紹 (Home Section) -->
+        <section id="home" class="h-[85vh] flex flex-col justify-center items-center text-center relative z-10 crt-screen-glow p-8 bg-[#1e2832]">
+            <p class="text-[var(--retro-accent)] text-xl sm:text-2xl mb-6">C:\> RUN CLOUDAI.BAT</p>
+            <h1 class="text-4xl sm:text-6xl lg:text-8xl font-extrabold text-[var(--retro-text)] mb-8 p-2">
+                <div class="typing-effect max-w-full lg:max-w-5xl mx-auto" style="color: var(--retro-monitor);">
+                    Empowering Business with Cloud AI & Data Intelligence
+                </div>
+            </h1>
+            <p class="text-xl sm:text-2xl text-gray-400 mb-12">>>> AI CORE READY. PROCEED WITH ANALYTICS.</p>
+
+            <!-- 預約諮詢 - 復古按鈕設計 -->
+            <a href="https://calendly.com/alex-ai-consulting" target="_blank"
+               class="inline-block text-xl px-8 py-4 retro-button border-4 border-[#000000] rounded-none">
+                <span class="text-black font-bold">C:\> EXECUTE CONSULT.PRG</span>
+            </a>
+        </section>
+
+        <hr class="border-t-2 border-[var(--retro-accent)] my-20 opacity-80" />
+
+        <!-- 區塊 2: 關於我 (About Me Section) -->
+        <section id="about" class="py-16">
+            <h2 class="text-3xl font-bold text-[var(--retro-accent)] mb-6">[ WINDOW: ABOUT_SHAOJUN.PY ]</h2>
+            <div class="bg-[#1e2832] p-8 rounded-none border-t-4 border-l-4 border-[var(--retro-accent)] shadow-md">
+                <h3 class="text-2xl font-bold text-[var(--retro-monitor)] mb-4">🙋‍♂️ 王紹鈞：新世代 AI 探究與雲端數據轉型的先驅者</h3>
+                <p class="text-lg leading-relaxed mb-4 text-[var(--retro-text)]">
+                    在數據爆炸的時代，王紹鈞 專注於擔任企業與尖端 AI 技術之間的橋樑。憑藉六個月的密集實戰經驗，我迅速成為 **雲端 AI 發展探索** 和 **AI 技術探究分析** 領域的新興專家。我的核心價值在於，能夠將複雜的 AI 概念轉化為具體可行的商業解決方案，確保每一次的技術導入都能帶來實質的效率提升與價值創造。
+                </p>
+                <p class="text-lg leading-relaxed mb-4 text-[var(--retro-text)]">
+                    在技術堆疊上，我精通 **Python** 在數據處理與後端邏輯的應用，並擅長利用 **MySQL** 建立穩固的數據基石。作為一位持有 **Azure AI Engineer Associate** 專業認證的技術人員，我具備將微軟 Azure 雲端服務與 AI 模型無縫整合的能力。
+                </p>
+                <p class="text-lg leading-relaxed text-[var(--retro-text)]">
+                    我深信，AI 不僅是工具，更是賦能企業迎戰未來的戰略核心。我期待能與您合作，以嚴謹的數據科學視角、創新的思維，和值得信賴的專業技術，共同驅動您的業務邁向更智慧、更高效的未來。
+                </p>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-[var(--retro-accent)] my-20 opacity-80" />
+
+        <!-- 區塊 3: AI 解決方案 (AI Solutions Section) -->
+        <section id="solutions" class="py-16">
+            <h2 class="text-3xl font-bold text-[var(--retro-accent)] mb-6">[ WINDOW: AI_SOLUTIONS.EXE ]</h2>
+            <div class="bg-[#1e2832] p-8 rounded-none border-t-4 border-l-4 border-[var(--retro-accent)] shadow-md mb-12">
+                <h3 class="text-2xl font-bold text-[var(--retro-monitor)] mb-4">🚀 AI 賦能解決方案：從概念到落地的一站式轉型服務</h3>
+                <p class="text-lg leading-relaxed text-[var(--retro-text)]">
+                    我們的 AI 解決方案，旨在成為您企業數據智能轉型的加速器。我們不只是提供技術，更著重於 **賦能** 您的企業和員工，使其掌握 AI 時代的核心競爭力。透過王紹鈞的專業服務，我們承諾將 AI 策略與您的核心業務目標緊密結合，實現可量化的成果。
+                </p>
+            </div>
+            
+            <!-- 服務細項卡片 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- 服務項目: 技術服務 -->
+                <div class="p-6 border-4 border-black retro-button bg-gray-200">
+                    <h4 class="text-xl font-bold text-[var(--retro-accent)] mb-3"><i class="fas fa-terminal mr-2"></i> 核心技術服務</h4>
+                    <ul class="list-disc list-inside text-black space-y-2 ml-4">
+                        <li>**生成式 AI 導入：** 協助企業導入 LLMs，應用於內容生成、智能客服等。</li>
+                        <li>**自動化腳本撰寫：** 運用 Python 進行繁瑣後台數據處理與維護的自動化。</li>
+                        <li>**AI 繪圖商用設計：** 運用 AI 繪圖技術，快速生成符合品牌調性的視覺資產。</li>
+                        <li>**數據分析與資料庫管理：** 運用 Python 清洗數據，並透過 MySQL 建立結構化資料庫。</li>
+                    </ul>
+                </div>
+
+                <!-- 服務項目: 專業規劃 -->
+                <div class="p-6 border-4 border-black retro-button bg-gray-200">
+                    <h4 class="text-xl font-bold text-[var(--retro-accent)] mb-3"><i class="fas fa-brain mr-2"></i> 專業規劃與賦能服務</h4>
+                    <ul class="list-disc list-inside text-black space-y-2 ml-4">
+                        <li>**企業員工 AI 賦能培訓：** 客製化 AI 應用與思維培訓，提升員工競爭力。</li>
+                        <li>**個人工作流優化諮詢：** 導入輕量級 AI 工具與自動化腳本，實現效率極大化。</li>
+                        <li>**AI 技術諮詢與導入評估：** 針對企業需求進行技術可行性分析 (Feasibility Analysis)。</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+        
+        <hr class="border-t-2 border-[var(--retro-accent)] my-20 opacity-80" />
+        
+        <!-- 區塊 4: 實戰案例 & 開源貢獻 (Portfolio Section) -->
+        <section id="portfolio" class="py-16">
+            <h2 class="text-3xl font-bold text-[var(--retro-accent)] mb-6">[ WINDOW: OPEN_SOURCE_CONTRIB.SH ]</h2>
+            <p class="text-gray-400 mb-10 text-lg">以下為個人專注於 AI 與自動化領域的實戰資源與開源貢獻：</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- 項目 1: 自動化客服機器人 -->
+                <a href="https://lin.ee/gtpERRL" target="_blank" class="block bg-gray-200 p-6 retro-button border-4 border-black">
+                    <div class="flex items-start mb-3">
+                        <i class="fab fa-github text-4xl text-[var(--retro-accent)] mr-4 mt-1"></i>
+                        <div>
+                            <h4 class="text-xl font-bold text-black">自動化客服機器人</h4>
+                            <p class="text-xs text-black">Protocol: LINE Integration</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm mt-3">基於 Whisper 模型與 Gemini 2 flash 模型，自動讀取客戶需求並進行回復。</p>
+                </a>
+
+                <!-- 項目 2: 烘焙機器人 -->
+                <a href="https://huggingface.co/spaces/alex/enterprise-rag-demo" target="_blank" class="block bg-gray-200 p-6 retro-button border-4 border-black">
+                    <div class="flex items-start mb-3">
+                        <i class="fab fa-github text-4xl text-[var(--retro-accent)] mr-4 mt-1"></i>
+                        <div>
+                            <h4 class="text-xl font-bold text-black">烘焙機器人</h4>
+                            <p class="text-xs text-black">Protocol: LangChain RAG</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm mt-3">使用 LangChain 搭建的 RAG 系統，可上傳 PDF 並進行精準問答。</p>
+                </a>
+
+                <!-- 項目 3: 動漫推薦機器人 -->
+                <a href="https://alex-ai-tools.com/prompt-gen" target="_blank" class="block bg-gray-200 p-6 retro-button border-4 border-black">
+                    <div class="flex items-start mb-3">
+                        <i class="fab fa-github text-4xl text-[var(--retro-accent)] mr-4 mt-1"></i>
+                        <div>
+                            <h4 class="text-xl font-bold text-black">動漫推薦機器人</h4>
+                            <p class="text-xs text-black">Protocol: Web Utility</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm mt-3">專為二次元開發的輔助工具，快速生成高品質的動漫推薦清單。</p>
+                </a>
+
+            </div>
+        </section>
+
+
+        <!-- 區塊 5: 聯絡我 (Contact Me Section) -->
+        <section id="contact" class="py-16">
+            <h2 class="text-3xl font-bold text-[var(--retro-accent)] mb-6">[ WINDOW: CONNECTION_LOG.PY ]</h2>
+
+            <div class="bg-[#1e2832] p-8 rounded-none border-t-4 border-l-4 border-[var(--retro-accent)] shadow-md">
+                
+                <!-- 模擬 Python 編輯器介面，帶有行號 -->
+                <div class="text-sm font-mono leading-relaxed mb-10 text-[var(--retro-text)]">
+                    <div class="flex">
+                        <span class="text-gray-500 mr-4">1</span>
+                        <p class="text-[var(--retro-accent)]">def initiate_connection():</p>
+                    </div>
+                    <div class="flex">
+                        <span class="text-gray-500 mr-4">2</span>
+                        <p class="text-[var(--retro-text)] ml-4"># Ready to receive consultation requests and project proposals.</p>
+                    </div>
+                    <div class="flex">
+                        <span class="text-gray-500 mr-4">3</span>
+                        <p class="text-[var(--retro-text)] ml-4">print("C:\> Attempting handshake...")</p>
+                    </div>
+                    <div class="flex">
+                        <span class="text-gray-500 mr-4">4</span>
+                        <p class="text-[var(--retro-text)] ml-4">connection_status = True</p>
+                    </div>
+                    <div class="flex">
+                        <span class="text-gray-500 mr-4">5</span>
+                        <p class="text-[var(--retro-text)] ml-4">if connection_status:</p>
+                    </div>
+                </div>
+
+                <!-- 聯絡按鈕設計 - 復古 3D 按鈕 -->
+                <a href="https://calendly.com/alex-ai-consulting" target="_blank"
+                   id="contact-button"
+                   class="inline-block text-xl px-8 py-4 retro-button border-4 border-black">
+                    <span class="font-bold text-black">> EXECUTE_CONNECTION_PROTOCOL.EXE</span>
+                </a>
+                
+                <h3 class="text-2xl text-[var(--retro-accent)] font-bold mt-12 mb-5">// EXTERNAL_DEPENDENCIES.JSON</h3>
+                
+                <!-- 社群連結 - 外部依賴庫樣式 -->
+                <div class="flex flex-col sm:flex-row sm:space-x-8 space-y-4 sm:space-y-0">
+                    <a href="https://github.com/alex" target="_blank" class="text-[var(--retro-text)] hover:text-[var(--retro-accent)] transition duration-300 group">
+                        <i class="fab fa-github text-3xl mr-2 group-hover:text-[var(--retro-accent)]"></i>
+                        <span class="text-sm">import GitHub</span>
+                    </a>
+                    <a href="https://linkedin.com/in/alex" target="_blank" class="text-[var(--retro-text)] hover:text-[var(--retro-accent)] transition duration-300 group">
+                        <i class="fab fa-linkedin-in text-3xl mr-2 group-hover:text-[var(--retro-accent)]"></i>
+                        <span class="text-sm">import LinkedIn</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="text-center py-6 border-t border-[var(--retro-accent)] text-gray-400 text-sm">
+        <p>System Architecture v1.0 (Retro Mode) | Protocol & Design by Shaojun Wang | Access Log: 1995</p>
+    </footer>
+
+    <!-- 移除原有的 JS 亂碼特效，僅保留打字機效果 (已在 CSS 中定義) -->
+    <script>
+        // 舊的代碼雨 JS 已移除，因為改為 CSS 掃描線
+        
+        // 舊的亂碼按鈕 JS 已移除，因為改為 CSS 3D 浮雕按鈕
+    </script>
+</body>
+</html>
