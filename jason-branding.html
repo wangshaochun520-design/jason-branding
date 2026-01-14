@@ -116,6 +116,54 @@
                 inset 1px 1px 0 0 #808080;  /* 底部亮光變深 */
             transform: translate(1px, 1px);
         }
+
+        /* ---------------------------------------------------- */
+        /* 5. 全局樣式重置與容器設定 (Global Reset & Container) */
+        /* ---------------------------------------------------- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+        }
+
+        /* ---------------------------------------------------- */
+        /* 漢堡包菜單樣式 */
+        /* ---------------------------------------------------- */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .menu-toggle div {
+            width: 30px;
+            height: 3px;
+            background-color: black;
+            margin: 4px 0;
+        }
+        @media (max-width: 600px) {
+            .menu-toggle {
+                display: flex;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #c0c0c0;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+        }
     </style>
 </head>
 
@@ -133,7 +181,14 @@
                         [ SYSTEM ] SHAOJUN.EXE
                     </span>
                 </div>
-                <div class="flex space-x-4 text-sm font-bold">
+                
+                <!-- 新增漢堡包菜單 -->
+                <div class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="nav-links flex space-x-4 text-sm font-bold">
                     <a href="#home" class="p-2 hover:bg-[var(--retro-accent)] hover:text-white transition duration-150">首頁</a>
                     <a href="#about" class="p-2 hover:bg-[var(--retro-accent)] hover:text-white transition duration-150">關於紹鈞</a>
                     <a href="#solutions" class="p-2 hover:bg-[var(--retro-accent)] hover:text-white transition duration-150">AI 解決方案</a>
@@ -146,7 +201,7 @@
     </nav>
 
     <!-- 主內容容器 -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 container">
 
         <!-- 區塊 1: 首頁標題與介紹 (Home Section) -->
         <section id="home" class="h-[85vh] flex flex-col justify-center items-center text-center relative z-10 crt-screen-glow p-8 bg-[#1e2832]">
@@ -290,6 +345,14 @@
                     <p class="text-gray-700 text-sm mt-3">專為二次元開發的輔助工具，快速生成高品質的動漫推薦清單。</p>
                 </a>
 
+            </div>
+
+            <!-- 新增作品集 PDF 嵌入區域 -->
+            <div class="mt-12 p-6 bg-[#1e2832] rounded-md border-t-4 border-l-4 border-[var(--retro-accent)] shadow-md">
+                <h2 class="text-2xl font-bold text-[var(--retro-accent)] mb-4">📂 作品集：inbox2crm ai</h2>
+                <p class="text-gray-300 text-sm mb-4">作者：陳韋廷，王紹鈞</p>
+                <!-- 嵌入 PDF 文件 -->
+                <embed src="Inbox2CRM AI.pdf" type="application/pdf" width="100%" height="600px" class="rounded-md shadow-md" />
             </div>
         </section>
 
