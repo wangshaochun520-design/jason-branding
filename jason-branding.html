@@ -1,259 +1,923 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>王紹鈞 - 履歷 | Cloud AI & Data Intelligence Engineer</title>
-
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="王紹鈞的個人履歷 - 雲端 AI 與數據智能工程師。專注於 Python 自動化、Azure AI 整合及企業數位轉型。">
-    <meta name="keywords" content="履歷, 王紹鈞, AI 工程師, Python, Azure, 數據智能">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="王紹鈞 - 履歷">
-    <meta property="og:description" content="雲端 AI 與數據智能工程師的個人履歷">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="rolexlogo.jpg">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .section-title {
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
-            border-radius: 2px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>王紹鈞 | Cloud AI & Data Intelligence Engineer</title>
+<meta name="description" content="王紹鈞 — 雲端 AI 與數據智能工程師。Azure AI、n8n、GCP、Python 自動化、資安 AI 方案設計。">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080c14;
+  --bg2:#0d1420;
+  --bg3:#111827;
+  --card:#131c2e;
+  --card2:#0f1825;
+  --border:#1e2d45;
+  --border2:#243550;
+  --cyan:#00d4ff;
+  --cyan2:#00a8cc;
+  --green:#00ffb3;
+  --gold:#f5c842;
+  --red:#ff4d6d;
+  --text:#e8edf5;
+  --text2:#8fa3c0;
+  --text3:#4a6080;
+  --glow:0 0 20px rgba(0,212,255,0.25);
+  --glow2:0 0 40px rgba(0,212,255,0.15);
+  --r:14px;
+  --r2:8px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:'Noto Sans TC',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  min-width:320px;
+  line-height:1.65;
+}
+ 
+/* ── CANVAS BG ── */
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55}
+ 
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.75rem clamp(1rem,4vw,2.5rem);
+  background:rgba(8,12,20,.85);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(.9rem,2.5vw,1.1rem);
+  color:var(--cyan);letter-spacing:.04em;
+}
+.nav-links{display:flex;gap:clamp(.6rem,2vw,1.5rem)}
+.nav-links a{
+  font-size:clamp(.72rem,1.6vw,.82rem);
+  color:var(--text2);text-decoration:none;
+  font-family:'JetBrains Mono',monospace;
+  letter-spacing:.05em;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--cyan)}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--text2);border-radius:2px;transition:.3s}
+@media(max-width:560px){
+  .nav-links{display:none;position:fixed;top:53px;left:0;right:0;background:var(--bg2);
+    flex-direction:column;padding:1.25rem 1.5rem;gap:.9rem;border-bottom:1px solid var(--border)}
+  .nav-links.open{display:flex}
+  .nav-burger{display:flex}
+}
+ 
+/* ── HERO ── */
+#hero{
+  min-height:100svh;
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(5rem,12vw,8rem) clamp(1rem,4vw,2.5rem) clamp(3rem,8vw,5rem);
+  position:relative;z-index:1;
+}
+.hero-inner{
+  max-width:780px;width:100%;
+  display:flex;flex-direction:column;gap:1.5rem;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(.72rem,1.8vw,.8rem);
+  color:var(--cyan);
+  background:rgba(0,212,255,.08);
+  border:1px solid rgba(0,212,255,.2);
+  padding:.35rem .85rem;border-radius:99px;
+  width:fit-content;letter-spacing:.06em;
+}
+.hero-tag i{font-size:.65rem;animation:blink 1.2s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+ 
+.hero-name{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(2.4rem,9vw,5.5rem);
+  line-height:1.0;
+  letter-spacing:-.01em;
+  background:linear-gradient(135deg,#fff 30%,var(--cyan) 70%,var(--green) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-en{
+  font-family:'Syne',sans-serif;font-weight:600;
+  font-size:clamp(.85rem,2.8vw,1.35rem);
+  color:var(--text2);letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.hero-desc{
+  font-size:clamp(.88rem,2.2vw,1rem);
+  color:var(--text2);max-width:560px;
+  line-height:1.8;
+}
+.hero-chips{
+  display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.25rem;
+}
+.chip{
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(.68rem,1.6vw,.75rem);
+  padding:.28rem .7rem;border-radius:6px;
+  border:1px solid var(--border2);
+  color:var(--text2);background:var(--card);
+  letter-spacing:.04em;transition:all .2s;
+}
+.chip:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,212,255,.07)}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:.5rem}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.7rem 1.4rem;border-radius:var(--r2);
+  font-size:clamp(.8rem,2vw,.88rem);font-weight:500;
+  text-decoration:none;cursor:pointer;border:none;
+  font-family:'Noto Sans TC',sans-serif;
+  transition:all .25s;
+}
+.btn-primary{
+  background:var(--cyan);color:#080c14;
+}
+.btn-primary:hover{background:#33dcff;box-shadow:0 0 24px rgba(0,212,255,.4);transform:translateY(-2px)}
+.btn-ghost{
+  background:transparent;color:var(--text);
+  border:1px solid var(--border2);
+}
+.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
+ 
+/* ── SECTION COMMON ── */
+section{
+  position:relative;z-index:1;
+  padding:clamp(3.5rem,8vw,6rem) clamp(1rem,4vw,2.5rem);
+}
+.section-wrap{max-width:900px;margin:0 auto}
+.sec-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(.68rem,1.5vw,.75rem);
+  color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:.6rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.sec-eyebrow::before{content:'//';opacity:.5}
+.sec-title{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(1.6rem,4.5vw,2.4rem);
+  color:#fff;margin-bottom:clamp(1.5rem,4vw,2.5rem);
+  line-height:1.15;
+}
+.sec-divider{
+  height:1px;background:linear-gradient(90deg,var(--cyan),transparent);
+  margin-bottom:clamp(1.5rem,4vw,2.5rem);opacity:.3;
+}
+ 
+/* ── ABOUT ── */
+#about{background:var(--bg2)}
+.about-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));
+  gap:clamp(1rem,3vw,1.5rem);
+}
+.about-text{
+  font-size:clamp(.88rem,2.2vw,1rem);
+  color:var(--text2);line-height:1.85;
+  grid-column:1/-1;
+  max-width:700px;
+}
+.stat-cards{
+  grid-column:1/-1;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));
+  gap:clamp(.6rem,2vw,1rem);
+  margin-top:.5rem;
+}
+.stat-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r);padding:clamp(1rem,3vw,1.5rem);
+  text-align:center;transition:all .3s;
+  position:relative;overflow:hidden;
+}
+.stat-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(0,212,255,.04),transparent);
+  opacity:0;transition:.3s;
+}
+.stat-card:hover{border-color:var(--cyan);box-shadow:var(--glow);transform:translateY(-3px)}
+.stat-card:hover::before{opacity:1}
+.stat-num{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(1.8rem,5vw,2.6rem);
+  color:var(--cyan);line-height:1;margin-bottom:.3rem;
+}
+.stat-label{font-size:clamp(.72rem,1.7vw,.8rem);color:var(--text3);letter-spacing:.04em}
+ 
+/* ── EXPERIENCE (TIMELINE) ── */
+#experience{background:var(--bg)}
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-item{
+  display:grid;
+  grid-template-columns:clamp(80px,15vw,130px) 40px 1fr;
+  gap:0 0;
+  align-items:start;
+}
+.tl-date{
+  text-align:right;padding-top:.25rem;
+  padding-right:clamp(.75rem,2vw,1.25rem);
+}
+.tl-date-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(.65rem,1.5vw,.72rem);
+  color:var(--cyan);font-weight:500;
+  line-height:1.4;display:block;
+}
+.tl-center{
+  display:flex;flex-direction:column;align-items:center;
+}
+.tl-dot{
+  width:14px;height:14px;border-radius:50%;
+  border:2px solid var(--cyan);
+  background:var(--bg);margin-top:.35rem;flex-shrink:0;
+  box-shadow:0 0 10px rgba(0,212,255,.5);
+  transition:.3s;
+}
+.tl-item:hover .tl-dot{background:var(--cyan);box-shadow:0 0 18px rgba(0,212,255,.8)}
+.tl-line{flex:1;width:1px;background:linear-gradient(var(--border2),var(--border));min-height:20px}
+.tl-item:last-child .tl-line{display:none}
+.tl-content{
+  padding:0 0 clamp(1.5rem,4vw,2.5rem) clamp(.75rem,2vw,1.25rem);
+}
+.tl-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r);padding:clamp(1rem,3vw,1.5rem);
+  transition:all .3s;
+}
+.tl-card:hover{border-color:rgba(0,212,255,.35);box-shadow:var(--glow2)}
+.tl-role{
+  font-family:'Syne',sans-serif;font-weight:700;
+  font-size:clamp(.95rem,2.5vw,1.15rem);color:#fff;
+  margin-bottom:.2rem;
+}
+.tl-company{
+  font-size:clamp(.78rem,1.8vw,.85rem);color:var(--cyan);
+  font-family:'JetBrains Mono',monospace;
+  margin-bottom:.75rem;letter-spacing:.04em;
+}
+.tl-desc{
+  font-size:clamp(.8rem,2vw,.9rem);color:var(--text2);
+  line-height:1.75;
+}
+.tl-desc li{
+  list-style:none;padding:.2rem 0;
+  display:flex;gap:.5rem;align-items:flex-start;
+}
+.tl-desc li::before{
+  content:'›';color:var(--cyan);flex-shrink:0;
+  margin-top:.05em;font-size:1.1em;
+}
+ 
+@media(max-width:480px){
+  .tl-item{grid-template-columns:65px 32px 1fr}
+}
+ 
+/* ── SKILLS ── */
+#skills{background:var(--bg2)}
+.skills-tabs{
+  display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem;
+}
+.tab-btn{
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(.7rem,1.6vw,.78rem);
+  padding:.35rem .9rem;border-radius:6px;
+  border:1px solid var(--border2);
+  background:transparent;color:var(--text2);
+  cursor:pointer;transition:all .2s;letter-spacing:.04em;
+}
+.tab-btn.active,.tab-btn:hover{
+  border-color:var(--cyan);color:var(--cyan);
+  background:rgba(0,212,255,.08);
+}
+.skills-panel{display:none}
+.skills-panel.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:1rem}
+.skill-item{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r2);padding:1rem;
+  transition:all .25s;
+}
+.skill-item:hover{border-color:rgba(0,212,255,.3);transform:translateY(-2px)}
+.skill-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem}
+.skill-name{font-size:clamp(.78rem,1.8vw,.85rem);font-weight:500;color:var(--text)}
+.skill-pct{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;color:var(--cyan);
+}
+.skill-bar{height:4px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden}
+.skill-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--cyan),var(--green));transition:width .8s cubic-bezier(.4,0,.2,1)}
+.skill-tag{
+  display:inline-block;margin-top:.5rem;
+  font-size:.65rem;font-family:'JetBrains Mono',monospace;
+  color:var(--text3);letter-spacing:.06em;
+}
+ 
+/* ── CERTS ── */
+.certs-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));
+  gap:1rem;margin-top:1.5rem;
+}
+.cert-card{
+  background:var(--card2);border:1px solid var(--border);
+  border-radius:var(--r);padding:clamp(1rem,3vw,1.4rem);
+  display:flex;align-items:flex-start;gap:1rem;
+  transition:all .3s;
+}
+.cert-card:hover{border-color:var(--gold);box-shadow:0 0 20px rgba(245,200,66,.12);transform:translateY(-2px)}
+.cert-icon{
+  width:42px;height:42px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;
+}
+.cert-icon.azure{background:linear-gradient(135deg,#0072c6,#00a8e0);color:#fff}
+.cert-icon.n8n{background:linear-gradient(135deg,#ea4b71,#ff6b8a);color:#fff}
+.cert-icon.gcp{background:linear-gradient(135deg,#1a73e8,#34a853);color:#fff}
+.cert-icon.py{background:linear-gradient(135deg,#3776ab,#ffd343);color:#fff}
+.cert-name{font-weight:600;font-size:clamp(.82rem,2vw,.92rem);color:#fff;margin-bottom:.25rem}
+.cert-sub{font-size:clamp(.7rem,1.6vw,.78rem);color:var(--text3)}
+.cert-badge{
+  display:inline-block;margin-top:.4rem;
+  font-family:'JetBrains Mono',monospace;font-size:.65rem;
+  background:rgba(245,200,66,.12);color:var(--gold);
+  border:1px solid rgba(245,200,66,.25);
+  padding:.15rem .5rem;border-radius:4px;letter-spacing:.05em;
+}
+ 
+/* ── PROJECTS ── */
+#projects{background:var(--bg)}
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));
+  gap:clamp(.75rem,2.5vw,1.25rem);
+}
+.proj-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r);padding:clamp(1.1rem,3.5vw,1.5rem);
+  transition:all .3s;display:flex;flex-direction:column;gap:.75rem;
+  position:relative;overflow:hidden;
+}
+.proj-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--cyan),var(--green));
+  transform:scaleX(0);transform-origin:left;transition:.35s;
+}
+.proj-card:hover{border-color:rgba(0,212,255,.3);box-shadow:var(--glow2);transform:translateY(-4px)}
+.proj-card:hover::after{transform:scaleX(1)}
+.proj-card.featured::after{transform:scaleX(1)}
+.proj-card.featured{border-color:rgba(0,212,255,.2)}
+.proj-head{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.proj-icon-wrap{
+  width:40px;height:40px;border-radius:10px;
+  background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;color:var(--cyan);flex-shrink:0;
+}
+.proj-feat{
+  font-family:'JetBrains Mono',monospace;font-size:.62rem;
+  color:var(--green);background:rgba(0,255,179,.08);
+  border:1px solid rgba(0,255,179,.2);
+  padding:.15rem .45rem;border-radius:4px;letter-spacing:.06em;
+}
+.proj-name{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(.92rem,2.3vw,1.05rem);color:#fff}
+.proj-desc{font-size:clamp(.78rem,1.9vw,.87rem);color:var(--text2);line-height:1.7;flex:1}
+.proj-tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.proj-tag{
+  font-family:'JetBrains Mono',monospace;font-size:.65rem;
+  padding:.18rem .5rem;border-radius:4px;
+  background:rgba(255,255,255,.04);border:1px solid var(--border2);
+  color:var(--text3);letter-spacing:.04em;
+}
+ 
+/* ── CONTACT ── */
+#contact{background:var(--bg2)}
+.contact-box{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r);padding:clamp(1.5rem,5vw,2.5rem);
+  text-align:center;margin-bottom:1.5rem;
+  background-image:radial-gradient(ellipse at 50% 0%,rgba(0,212,255,.06),transparent 60%);
+}
+.contact-headline{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(1.3rem,4vw,2rem);color:#fff;margin-bottom:.75rem;
+}
+.contact-sub{font-size:clamp(.82rem,2vw,.92rem);color:var(--text2);margin-bottom:1.5rem}
+.contact-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem}
+.btn-cyan{background:var(--cyan);color:#080c14}
+.btn-cyan:hover{background:#33dcff;box-shadow:0 0 24px rgba(0,212,255,.5);transform:translateY(-2px)}
+.btn-dark{background:var(--card2);color:var(--text);border:1px solid var(--border2)}
+.btn-dark:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
+.contact-links{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));
+  gap:1rem;
+}
+.contact-link{
+  display:flex;align-items:center;gap:.75rem;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r2);padding:1rem 1.25rem;
+  text-decoration:none;color:var(--text2);transition:all .25s;
+}
+.contact-link:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px);box-shadow:var(--glow)}
+.contact-link i{font-size:1.1rem;width:20px;text-align:center;color:inherit}
+.cl-label{font-size:clamp(.72rem,1.7vw,.8rem);display:block;margin-bottom:.1rem;color:var(--text3);font-family:'JetBrains Mono',monospace;letter-spacing:.05em}
+.cl-val{font-size:clamp(.8rem,2vw,.9rem);font-weight:500}
+ 
+/* ── FOOTER ── */
+footer{
+  position:relative;z-index:1;
+  text-align:center;padding:1.5rem 1rem;
+  border-top:1px solid var(--border);
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(.65rem,1.5vw,.72rem);
+  color:var(--text3);letter-spacing:.06em;
+}
+ 
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+ 
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:99px}
+::-webkit-scrollbar-thumb:hover{background:var(--cyan2)}
+</style>
 </head>
-
-<body class="bg-white text-gray-900">
-    <!-- Header -->
-    <header class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
-                <!-- Profile Image -->
-                <div class="flex-shrink-0">
-                    <img src="rolexlogo.jpg" alt="王紹鈞" class="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg">
-                </div>
-                <!-- Name and Title -->
-                <div class="text-center md:text-left">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-2">王紹鈞</h1>
-                    <p class="text-xl md:text-2xl text-blue-100 mb-4">Cloud AI & Data Intelligence Engineer</p>
-                    <div class="flex flex-wrap justify-center md:justify-start gap-4 text-sm">
-                        <div class="flex items-center">
-                            <i class="fas fa-envelope mr-2"></i>
-                            <span>shaoujun@example.com</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-phone mr-2"></i>
-                            <span>+886 123 456 789</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-map-marker-alt mr-2"></i>
-                            <span>台灣</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<body>
+ 
+<canvas id="particles"></canvas>
+ 
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">王紹鈞 <span style="color:var(--text3)">/ WSJ</span></div>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">關於</a>
+    <a href="#experience">經歷</a>
+    <a href="#skills">技能</a>
+    <a href="#projects">專案</a>
+    <a href="#contact">聯絡</a>
+  </div>
+  <div class="nav-burger" id="burger" onclick="toggleNav()" aria-label="選單">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+ 
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-tag"><i class="fas fa-circle"></i> AVAILABLE FOR OPPORTUNITIES</div>
+    <h1 class="hero-name">王紹鈞</h1>
+    <div class="hero-en">Cloud AI &amp; Data Intelligence Engineer</div>
+    <p class="hero-desc">
+      橋接企業需求與尖端 AI 技術的實踐者。深耕雲端自動化、生成式 AI 整合與資料安全解決方案，
+      將複雜的技術概念轉化為可落地的商業價值。
+    </p>
+    <div class="hero-chips">
+      <span class="chip">Azure AI</span>
+      <span class="chip">Python</span>
+      <span class="chip">n8n</span>
+      <span class="chip">GCP</span>
+      <span class="chip">LangChain</span>
+      <span class="chip">MySQL</span>
+      <span class="chip">LINE API</span>
+      <span class="chip">RAG</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> 聯絡我</a>
+      <a href="#projects" class="btn btn-ghost"><i class="fas fa-code-branch"></i> 查看專案</a>
+    </div>
+  </div>
+</section>
+ 
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-wrap reveal">
+    <div class="sec-eyebrow">ABOUT ME</div>
+    <h2 class="sec-title">關於我</h2>
+    <div class="sec-divider"></div>
+    <p class="about-text">
+      新世代 AI 探究與雲端數據轉型的先驅者。擁有永豐金證券數據金融部的實戰歷練，
+      深度理解金融數據場景下的 AI 應用需求。持 Azure AI Engineer Associate 認證，
+      並通過 n8n Level 1 &amp; 2 自動化工程師測驗，具備從架構設計到系統整合的全端能力。
+      核心專注於資安 AI 方案設計、工作流自動化與企業 LLM 落地，
+      以「不過度依賴 AI 決策」的原則守護用戶資料安全。
+    </p>
+    <div class="stat-cards">
+      <div class="stat-card">
+        <div class="stat-num">6+</div>
+        <div class="stat-label">月金融業實戰</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">AI 認證通過</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">6+</div>
+        <div class="stat-label">核心專案完成</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <div class="stat-label">雲端平台整合</div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-wrap reveal">
+    <div class="sec-eyebrow">EXPERIENCE</div>
+    <h2 class="sec-title">工作經歷</h2>
+    <div class="sec-divider"></div>
+    <div class="timeline">
+ 
+      <div class="tl-item">
+        <div class="tl-date"><span class="tl-date-label">2025<br>02 – 08</span></div>
+        <div class="tl-center"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <div class="tl-card">
+            <div class="tl-role">數據金融部 助理</div>
+            <div class="tl-company">▸ 永豐金證券 SinoPac Securities</div>
+            <ul class="tl-desc">
+              <li>協助數據金融部進行市場數據分析與報告產出</li>
+              <li>參與 AI 輔助決策工具的評估與試行</li>
+              <li>支援客戶數據管理流程優化，確保資料合規性</li>
+              <li>深化金融科技場景下的數據應用實戰理解</li>
+            </ul>
+          </div>
         </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <!-- Summary -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-semibold mb-6 section-title">個人簡介</h2>
-            <div class="bg-gray-50 p-8 rounded-lg shadow-sm">
-                <p class="text-lg leading-relaxed text-gray-700">
-                    新世代 AI 探究與雲端數據轉型的先驅者，專注於擔任企業與尖端 AI 技術之間的橋樑。
-                    憑藉六個月的密集實戰經驗，我迅速成為雲端 AI 發展探索和 AI 技術探究分析領域的新興專家。
-                    核心價值在於將複雜的 AI 概念轉化為具體可行的商業解決方案。
-                </p>
-            </div>
-        </section>
-
-        <!-- Experience -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-semibold mb-6 section-title">工作經驗</h2>
-            <div class="space-y-8">
-                <div class="bg-white border border-gray-200 p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                        <h3 class="text-xl font-semibold text-gray-900">AI 技術顧問</h3>
-                        <span class="text-blue-600 font-medium">2023 - 至今</span>
-                    </div>
-                    <p class="text-gray-600 mb-4">專注於企業 AI 轉型諮詢與技術實施</p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1">
-                        <li>協助企業導入生成式 AI 應用於內容生成與智能客服</li>
-                        <li>開發 Python 自動化腳本提升後台數據處理效率</li>
-                        <li>整合 Azure AI 服務與企業系統</li>
-                        <li>進行 AI 技術可行性分析與實施規劃</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-semibold mb-6 section-title">技能專長</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white border border-gray-200 p-6 rounded-lg shadow-sm">
-                    <h3 class="text-lg font-semibold mb-4 text-gray-900">技術技能</h3>
-                    <div class="space-y-3">
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium">Python</span>
-                                <span class="text-sm text-gray-600">90%</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium">Azure AI</span>
-                                <span class="text-sm text-gray-600">85%</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium">MySQL</span>
-                                <span class="text-sm text-gray-600">80%</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-blue-600 h-2 rounded-full" style="width: 80%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white border border-gray-200 p-6 rounded-lg shadow-sm">
-                    <h3 class="text-lg font-semibold mb-4 text-gray-900">認證與工具</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <i class="fas fa-certificate text-blue-600 mr-3"></i>
-                            <span>Azure AI Engineer Associate</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fab fa-python text-blue-600 mr-3"></i>
-                            <span>Python 開發</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-database text-blue-600 mr-3"></i>
-                            <span>資料庫管理</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-cloud text-blue-600 mr-3"></i>
-                            <span>雲端服務整合</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-semibold mb-6 section-title">專案經驗</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-white border border-gray-200 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-robot text-2xl text-blue-600 mr-3"></i>
-                        <h3 class="text-lg font-semibold">自動化客服機器人</h3>
-                    </div>
-                    <p class="text-gray-600 text-sm mb-4">基於 Whisper 與 Gemini 模型的 LINE 整合客服系統</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Python</span>
-                        <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">AI</span>
-                        <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">LINE API</span>
-                    </div>
-                </div>
-                <div class="bg-white border border-gray-200 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-book text-2xl text-blue-600 mr-3"></i>
-                        <h3 class="text-lg font-semibold">烘焙機器人</h3>
-                    </div>
-                    <p class="text-gray-600 text-sm mb-4">使用 LangChain RAG 的 PDF 問答系統</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">LangChain</span>
-                        <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">RAG</span>
-                        <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">PDF</span>
-                    </div>
-                </div>
-                <div class="bg-white border border-gray-200 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-film text-2xl text-blue-600 mr-3"></i>
-                        <h3 class="text-lg font-semibold">動漫推薦機器人</h3>
-                    </div>
-                    <p class="text-gray-600 text-sm mb-4">專為二次元愛好者設計的推薦工具</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Web App</span>
-                        <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">AI</span>
-                        <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">推薦系統</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-semibold mb-6 section-title">教育背景</h2>
-            <div class="bg-white border border-gray-200 p-8 rounded-lg shadow-sm">
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                    <h3 class="text-xl font-semibold text-gray-900">相關專業學習</h3>
-                    <span class="text-blue-600 font-medium">持續學習中</span>
-                </div>
-                <p class="text-gray-600 mb-4">Azure AI Engineer Associate 認證通過</p>
-                <p class="text-gray-700">透過自學與實戰項目，持續深化 AI 與雲端技術的專業知識</p>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section>
-            <h2 class="text-3xl font-semibold mb-6 section-title">聯絡方式</h2>
-            <div class="bg-gray-50 p-8 rounded-lg shadow-sm">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <a href="https://calendly.com/alex-ai-consulting" target="_blank" 
-                       class="flex items-center justify-center p-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                        <i class="fas fa-calendar-alt mr-3"></i>
-                        <span>預約諮詢</span>
-                    </a>
-                    <a href="https://github.com/alex" target="_blank" 
-                       class="flex items-center justify-center p-4 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors">
-                        <i class="fab fa-github mr-3"></i>
-                        <span>GitHub</span>
-                    </a>
-                    <a href="https://linkedin.com/in/alex" target="_blank" 
-                       class="flex items-center justify-center p-4 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors">
-                        <i class="fab fa-linkedin-in mr-3"></i>
-                        <span>LinkedIn</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-100 py-8 mt-16">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-gray-600">© 2024 王紹鈞. All rights reserved.</p>
+      </div>
+ 
+      <div class="tl-item">
+        <div class="tl-date"><span class="tl-date-label">2023<br>至今</span></div>
+        <div class="tl-center"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <div class="tl-card">
+            <div class="tl-role">AI 技術顧問</div>
+            <div class="tl-company">▸ 獨立接案 / Freelance</div>
+            <ul class="tl-desc">
+              <li>協助企業導入生成式 AI 應用於內容生成與智能客服</li>
+              <li>開發 Python 自動化腳本與 n8n 工作流提升後台處理效率</li>
+              <li>整合 Azure AI 與 GCP 服務至企業既有系統</li>
+              <li>設計資安 AI 方案：以非 AI 機制保障用戶資料安全邊界</li>
+              <li>進行 AI 技術可行性分析、PoC 驗證與落地規劃</li>
+            </ul>
+          </div>
         </div>
-    </footer>
+      </div>
+ 
+    </div>
+  </div>
+</section>
+ 
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-wrap reveal">
+    <div class="sec-eyebrow">SKILLS & CERTS</div>
+    <h2 class="sec-title">技能與認證</h2>
+    <div class="sec-divider"></div>
+ 
+    <div class="skills-tabs">
+      <button class="tab-btn active" onclick="switchTab('cloud')">雲端 &amp; AI</button>
+      <button class="tab-btn" onclick="switchTab('dev')">開發工具</button>
+      <button class="tab-btn" onclick="switchTab('auto')">自動化</button>
+      <button class="tab-btn" onclick="switchTab('data')">資料 &amp; 安全</button>
+    </div>
+ 
+    <div class="skills-panel active" id="tab-cloud">
+      <div class="skill-item"><div class="skill-top"><span class="skill-name">Azure AI Services</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div><span class="skill-tag">CERTIFIED</span></div>
+      <div class="skill-item"><div class="skill-top"><span class="skill-name">GCP (Google Cloud)</span><span class="skill-pct">72%</span></div><div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div><span class="skill-tag">HANDS-ON</span></div>
+      <div class="skill-item"><div class="skill-top"><span class="skill-name">Azure OpenAI</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div><span class="skill-tag">PRODUCTION</span></div>
+      <div class="skill-item"><div class="skill-top"><span class="skill-name">LangChain / RAG</span><span class="skill-pct">78%</span></div><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div><span class="skill-tag">APPLIED</span></div>
+      <div class="skill-item"><div class="skill-top"><span class="skill-name">Whisper / Gemini</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div><span class="skill-tag">INTEGRATED</span></div>
+    </div>
+ 
+    <div class="skills-panel" id="tab-dev">
+      <div class="skill-item"><div class="skill-top"><span class="skill-name">Python</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div><span class="skill-tag">PRIMARY LANG</span></div>
+      <div class="skill-item"><div class="skill-top"><span class="skill-name">Web (HTML/CSS/JS)</span><span class="skill-pct">78%</span></div><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div><span class="skill-tag">FULLSTACK</span></div>
+      <div class="skill-item"><div class="skill-top"><span class="skill-name">MySQL</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div><span class="skill-tag">PRODUCTION</span></div>
+      <div class="skill-item"><div class="skill-top"><span class="skill-name">LINE API</span><span class="skill-pct">82%</span></div><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div><span class="skill-tag">DEPLOYED</span></div>
+      <div class="skill-item"><div class="skill-top"><span class="skill-name">Git / GitHub</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div><span class="skill-tag">VERSION CTRL</span></div>
+    </div>
+ 
+    <div class="skills-panel" id="tab-auto">
+      <div class="skill-item"><div class="skill-top"><span class="skill-name">n8n Workflow</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div><span class="skill-tag">LV1 &amp; LV2 CERT</span></div>
+      <div class="skill-item"><div class="skill-top"><span class="skill-name">Python 自動化腳本</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div><span class="skill-tag">DEPLOYED</span></div>
+      <div class="skill-item"><div class="skill-top"><span class="skill-name">API 整合</span><span class="skill-pct">83%</span></div><div class="skill-bar"><div class="skill-fill" style="width:83%"></div></div><span class="skill-tag">REST / WEBHOOK</span></div>
+      <div class="skill-item"><div class="skill-top"><span class="skill-name">工作流架構設計</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div><span class="skill-tag">ENTERPRISE</span></div>
+    </div>
+ 
+    <div class="skills-panel" id="tab-data">
+      <div class="skill-item"><div class="skill-top"><span class="skill-name">資安 AI 方案設計</span><span class="skill-pct">78%</span></div><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div><span class="skill-tag">ORIGINAL DESIGN</span></div>
+      <div class="skill-item"><div class="skill-top"><span class="skill-name">金融數據分析</span><span class="skill-pct">70%</span></div><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div><span class="skill-tag">SINOPAC EXP</span></div>
+      <div class="skill-item"><div class="skill-top"><span class="skill-name">資料合規管理</span><span class="skill-pct">72%</span></div><div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div><span class="skill-tag">GDPR AWARE</span></div>
+      <div class="skill-item"><div class="skill-top"><span class="skill-name">MySQL 資料管理</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div><span class="skill-tag">PRODUCTION</span></div>
+    </div>
+ 
+    <!-- CERTS -->
+    <div style="margin-top:2rem">
+      <div class="sec-eyebrow" style="margin-bottom:1rem">CERTIFICATIONS</div>
+      <div class="certs-grid">
+        <div class="cert-card">
+          <div class="cert-icon azure"><i class="fab fa-microsoft"></i></div>
+          <div>
+            <div class="cert-name">Azure AI Engineer Associate</div>
+            <div class="cert-sub">Microsoft Azure</div>
+            <div class="cert-badge">✓ PASSED</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon n8n"><i class="fas fa-project-diagram"></i></div>
+          <div>
+            <div class="cert-name">n8n Automation Engineer</div>
+            <div class="cert-sub">Level 1 &amp; Level 2</div>
+            <div class="cert-badge">✓ PASSED</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon gcp"><i class="fab fa-google"></i></div>
+          <div>
+            <div class="cert-name">Google Cloud Platform</div>
+            <div class="cert-sub">AI &amp; Data Services</div>
+            <div class="cert-badge">HANDS-ON</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon py"><i class="fab fa-python"></i></div>
+          <div>
+            <div class="cert-name">Python 全端開發</div>
+            <div class="cert-sub">Web + Automation + AI</div>
+            <div class="cert-badge">PRODUCTION</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-wrap reveal">
+    <div class="sec-eyebrow">PROJECTS</div>
+    <h2 class="sec-title">專案經驗</h2>
+    <div class="sec-divider"></div>
+    <div class="projects-grid">
+ 
+      <div class="proj-card featured">
+        <div class="proj-head">
+          <div class="proj-icon-wrap"><i class="fas fa-shield-halved"></i></div>
+          <span class="proj-feat">FEATURED</span>
+        </div>
+        <div class="proj-name">資安 AI 資料保護方案</div>
+        <p class="proj-desc">
+          設計以「非 AI 機制」為核心的資料安全架構：在 AI 決策流程的外層建立傳統規則引擎與
+          存取控制邊界，確保敏感用戶資料不直接暴露於大型語言模型的訓練或推論過程中。
+        </p>
+        <div class="proj-tags">
+          <span class="proj-tag">Security Design</span>
+          <span class="proj-tag">Zero-Trust</span>
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">Rule Engine</span>
+        </div>
+      </div>
+ 
+      <div class="proj-card featured">
+        <div class="proj-head">
+          <div class="proj-icon-wrap"><i class="fas fa-robot"></i></div>
+          <span class="proj-feat">DEPLOYED</span>
+        </div>
+        <div class="proj-name">自動化客服機器人</div>
+        <p class="proj-desc">
+          基於 Whisper 語音辨識與 Gemini LLM 的 LINE 整合客服系統，
+          支援語音轉文字、多輪對話與自動工單分派。
+        </p>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">Whisper</span>
+          <span class="proj-tag">Gemini</span>
+          <span class="proj-tag">LINE API</span>
+          <span class="proj-tag">n8n</span>
+        </div>
+      </div>
+ 
+      <div class="proj-card">
+        <div class="proj-head">
+          <div class="proj-icon-wrap"><i class="fas fa-globe"></i></div>
+        </div>
+        <div class="proj-name">Python 全端網頁應用</div>
+        <p class="proj-desc">
+          使用 Python 後端（Flask / FastAPI）搭配前端技術，於 GCP 雲端部署的完整 Web 應用程式，
+          整合 AI 功能與資料庫管理。
+        </p>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">Flask</span>
+          <span class="proj-tag">GCP</span>
+          <span class="proj-tag">MySQL</span>
+        </div>
+      </div>
+ 
+      <div class="proj-card">
+        <div class="proj-head">
+          <div class="proj-icon-wrap"><i class="fas fa-book-open"></i></div>
+        </div>
+        <div class="proj-name">烘焙知識 RAG 機器人</div>
+        <p class="proj-desc">
+          使用 LangChain RAG 架構的 PDF 問答系統，讓用戶上傳烘焙手冊後即可進行
+          精準的知識問答，向量化儲存於本地向量資料庫。
+        </p>
+        <div class="proj-tags">
+          <span class="proj-tag">LangChain</span>
+          <span class="proj-tag">RAG</span>
+          <span class="proj-tag">PDF</span>
+          <span class="proj-tag">Vector DB</span>
+        </div>
+      </div>
+ 
+      <div class="proj-card">
+        <div class="proj-head">
+          <div class="proj-icon-wrap"><i class="fas fa-film"></i></div>
+        </div>
+        <div class="proj-name">動漫推薦 AI 助理</div>
+        <p class="proj-desc">
+          結合用戶偏好分析與 AI 推薦引擎，為二次元愛好者打造個人化推薦體驗，
+          支援關鍵字搜尋與情境式對話推薦。
+        </p>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">AI</span>
+          <span class="proj-tag">Web App</span>
+          <span class="proj-tag">推薦系統</span>
+        </div>
+      </div>
+ 
+      <div class="proj-card">
+        <div class="proj-head">
+          <div class="proj-icon-wrap"><i class="fas fa-sitemap"></i></div>
+        </div>
+        <div class="proj-name">企業 n8n 自動化工作流</div>
+        <p class="proj-desc">
+          設計並部署多條 n8n 自動化工作流，整合 CRM、LINE 通知、資料庫同步與
+          AI 摘要生成，大幅降低人工作業成本。
+        </p>
+        <div class="proj-tags">
+          <span class="proj-tag">n8n</span>
+          <span class="proj-tag">Webhook</span>
+          <span class="proj-tag">Azure AI</span>
+          <span class="proj-tag">Automation</span>
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+</section>
+ 
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-wrap reveal">
+    <div class="sec-eyebrow">CONTACT</div>
+    <h2 class="sec-title">聯絡方式</h2>
+    <div class="sec-divider"></div>
+    <div class="contact-box">
+      <div class="contact-headline">讓我們一起打造 AI 解決方案 🚀</div>
+      <p class="contact-sub">無論是企業 AI 導入、自動化工作流設計，或資安方案評估，歡迎聯繫討論！</p>
+      <div class="contact-btns">
+        <a href="https://calendly.com/alex-ai-consulting" target="_blank" class="btn btn-cyan">
+          <i class="fas fa-calendar-alt"></i> 預約免費諮詢
+        </a>
+        <a href="mailto:shaoujun@example.com" class="btn btn-ghost" style="border-color:var(--border2)">
+          <i class="fas fa-envelope"></i> 發送 Email
+        </a>
+      </div>
+    </div>
+    <div class="contact-links">
+      <a href="https://github.com/wangshaochun520-design?tab=overview&from=2025-12-01&to=2025-12-31" target="_blank" class="contact-link">
+        <i class="fab fa-github"></i>
+        <div><span class="cl-label">GITHUB</span><span class="cl-val">wangshaochun520-design</span></div>
+      </a>
+      <a href="https://www.linkedin.com/in/%E7%B4%B9%E9%88%9E-%E7%8E%8B-b6b866396/?skipRedirect=true" target="_blank" class="contact-link">
+        <i class="fab fa-linkedin"></i>
+        <div><span class="cl-label">LINKEDIN</span><span class="cl-val">王紹鈞 · LinkedIn</span></div>
+      </a>
+      <a href="tel:+886123456789" class="contact-link">
+        <i class="fas fa-phone"></i>
+        <div><span class="cl-label">PHONE</span><span class="cl-val">+886 123 456 789</span></div>
+      </a>
+      <a href="mailto:shaoujun@example.com" class="contact-link">
+        <i class="fas fa-envelope"></i>
+        <div><span class="cl-label">EMAIL</span><span class="cl-val">shaoujun@example.com</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+ 
+<footer>
+  © 2025 王紹鈞 · Cloud AI &amp; Data Intelligence Engineer · Built with ❤️ &amp; Python
+</footer>
+ 
+<script>
+// ── PARTICLES ──
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let pts = [];
+const N = 55;
+ 
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+ 
+for (let i = 0; i < N; i++) {
+  pts.push({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    vx: (Math.random() - .5) * .35,
+    vy: (Math.random() - .5) * .35,
+    r: Math.random() * 1.5 + .5,
+    o: Math.random() * .5 + .2
+  });
+}
+ 
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  pts.forEach(p => {
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(0,212,255,${p.o})`;
+    ctx.fill();
+  });
+  for (let i = 0; i < pts.length; i++) {
+    for (let j = i + 1; j < pts.length; j++) {
+      const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+      const d = Math.sqrt(dx*dx+dy*dy);
+      if (d < 120) {
+        ctx.beginPath();
+        ctx.moveTo(pts[i].x, pts[i].y);
+        ctx.lineTo(pts[j].x, pts[j].y);
+        ctx.strokeStyle = `rgba(0,212,255,${.12*(1-d/120)})`;
+        ctx.lineWidth = .6;
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(draw);
+}
+draw();
+ 
+// ── NAV ──
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+});
+ 
+// ── TABS ──
+function switchTab(id) {
+  document.querySelectorAll('.tab-btn').forEach((b, i) => {
+    const panels = ['cloud','dev','auto','data'];
+    b.classList.toggle('active', panels[i] === id);
+  });
+  document.querySelectorAll('.skills-panel').forEach(p => {
+    p.classList.toggle('active', p.id === 'tab-' + id);
+  });
+}
+ 
+// ── REVEAL ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: .1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+ 
+// ── SKILL BARS animate on reveal ──
+const barObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.skill-fill').forEach(bar => {
+        const w = bar.style.width;
+        bar.style.width = '0';
+        setTimeout(() => { bar.style.width = w; }, 100);
+      });
+    }
+  });
+}, { threshold: .3 });
+document.querySelectorAll('.skills-panel').forEach(p => barObserver.observe(p));
+</script>
 </body>
 </html>
