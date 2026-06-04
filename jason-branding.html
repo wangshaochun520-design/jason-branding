@@ -39,10 +39,10 @@ body{
   min-width:320px;
   line-height:1.65;
 }
- 
+
 /* ── CANVAS BG ── */
 #particles{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55}
- 
+
 /* ── NAV ── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
@@ -74,7 +74,7 @@ nav{
   .nav-links.open{display:flex}
   .nav-burger{display:flex}
 }
- 
+
 /* ── HERO ── */
 #hero{
   min-height:100svh;
@@ -98,7 +98,7 @@ nav{
 }
 .hero-tag i{font-size:.65rem;animation:blink 1.2s step-end infinite}
 @keyframes blink{50%{opacity:0}}
- 
+
 .hero-name{
   font-family:'Syne',sans-serif;font-weight:800;
   font-size:clamp(2.4rem,9vw,5.5rem);
@@ -149,7 +149,7 @@ nav{
   border:1px solid var(--border2);
 }
 .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
- 
+
 /* ── SECTION COMMON ── */
 section{
   position:relative;z-index:1;
@@ -174,7 +174,7 @@ section{
   height:1px;background:linear-gradient(90deg,var(--cyan),transparent);
   margin-bottom:clamp(1.5rem,4vw,2.5rem);opacity:.3;
 }
- 
+
 /* ── ABOUT ── */
 #about{background:var(--bg2)}
 .about-grid{
@@ -214,7 +214,7 @@ section{
   color:var(--cyan);line-height:1;margin-bottom:.3rem;
 }
 .stat-label{font-size:clamp(.72rem,1.7vw,.8rem);color:var(--text3);letter-spacing:.04em}
- 
+
 /* ── EXPERIENCE (TIMELINE) ── */
 #experience{background:var(--bg)}
 .timeline{display:flex;flex-direction:column;gap:0}
@@ -278,11 +278,11 @@ section{
   content:'›';color:var(--cyan);flex-shrink:0;
   margin-top:.05em;font-size:1.1em;
 }
- 
+
 @media(max-width:480px){
   .tl-item{grid-template-columns:65px 32px 1fr}
 }
- 
+
 /* ── SKILLS ── */
 #skills{background:var(--bg2)}
 .skills-tabs{
@@ -321,7 +321,7 @@ section{
   font-size:.65rem;font-family:'JetBrains Mono',monospace;
   color:var(--text3);letter-spacing:.06em;
 }
- 
+
 /* ── CERTS ── */
 .certs-grid{
   display:grid;
@@ -353,7 +353,7 @@ section{
   border:1px solid rgba(245,200,66,.25);
   padding:.15rem .5rem;border-radius:4px;letter-spacing:.05em;
 }
- 
+
 /* ── PROJECTS ── */
 #projects{background:var(--bg)}
 .projects-grid{
@@ -398,7 +398,7 @@ section{
   background:rgba(255,255,255,.04);border:1px solid var(--border2);
   color:var(--text3);letter-spacing:.04em;
 }
- 
+
 /* ── CONTACT ── */
 #contact{background:var(--bg2)}
 .contact-box{
@@ -431,7 +431,7 @@ section{
 .contact-link i{font-size:1.1rem;width:20px;text-align:center;color:inherit}
 .cl-label{font-size:clamp(.72rem,1.7vw,.8rem);display:block;margin-bottom:.1rem;color:var(--text3);font-family:'JetBrains Mono',monospace;letter-spacing:.05em}
 .cl-val{font-size:clamp(.8rem,2vw,.9rem);font-weight:500}
- 
+
 /* ── FOOTER ── */
 footer{
   position:relative;z-index:1;
@@ -441,23 +441,88 @@ footer{
   font-size:clamp(.65rem,1.5vw,.72rem);
   color:var(--text3);letter-spacing:.06em;
 }
- 
+
 /* ── ANIMATIONS ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:none}
- 
+
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:99px}
 ::-webkit-scrollbar-thumb:hover{background:var(--cyan2)}
+
+/* ════════════════════════════
+   INTERACTIVE EXTRAS
+════════════════════════════ */
+
+/* 1. CURSOR GLOW */
+#cursor-glow{
+  pointer-events:none;position:fixed;z-index:9999;
+  width:380px;height:380px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,212,255,.10) 0%,transparent 70%);
+  transform:translate(-50%,-50%);
+  mix-blend-mode:screen;
+}
+#cursor-dot{
+  pointer-events:none;position:fixed;z-index:10000;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--cyan);transform:translate(-50%,-50%);
+  box-shadow:0 0 12px rgba(0,212,255,.9);
+  transition:transform .12s,background .2s;
+}
+body.cursor-on-link #cursor-dot{
+  transform:translate(-50%,-50%) scale(2.5);
+  background:var(--green);
+}
+
+/* 2. TYPEWRITER */
+.typewriter-cursor{
+  display:inline-block;width:2px;height:.9em;
+  background:var(--cyan);margin-left:3px;vertical-align:middle;
+  animation:cur-blink .75s step-end infinite;
+}
+@keyframes cur-blink{50%{opacity:0}}
+
+/* 3. SKILL TOOLTIP */
+.skill-item{position:relative;cursor:pointer}
+.skill-tooltip{
+  position:absolute;bottom:calc(100% + 10px);left:50%;
+  transform:translateX(-50%) translateY(6px);
+  background:#0d1a2e;border:1px solid rgba(0,212,255,.3);
+  border-radius:10px;padding:.75rem 1rem;width:230px;
+  font-size:.78rem;color:var(--text2);line-height:1.6;
+  opacity:0;pointer-events:none;
+  transition:opacity .22s,transform .22s;
+  z-index:200;box-shadow:0 8px 32px rgba(0,212,255,.12);
+}
+.skill-tooltip::after{
+  content:'';position:absolute;top:100%;left:50%;
+  transform:translateX(-50%);
+  border:6px solid transparent;
+  border-top-color:rgba(0,212,255,.3);
+}
+.skill-item:hover .skill-tooltip{opacity:1;transform:translateX(-50%) translateY(0)}
+.skill-tooltip-title{
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  color:var(--cyan);font-weight:600;margin-bottom:.35rem;letter-spacing:.05em;
+}
+
+/* 4. CARD TILT */
+.proj-card{transform-style:preserve-3d;will-change:transform}
+.tilt-shine{
+  position:absolute;inset:0;border-radius:inherit;
+  background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.07) 0%,transparent 65%);
+  opacity:0;transition:opacity .3s;pointer-events:none;
+}
+.proj-card:hover .tilt-shine{opacity:1}
 </style>
 </head>
 <body>
- 
+
 <canvas id="particles"></canvas>
- 
+
 <!-- NAV -->
 <nav>
   <div class="nav-logo">王紹鈞 <span style="color:var(--text3)">/ WSJ</span></div>
@@ -472,7 +537,7 @@ footer{
     <span></span><span></span><span></span>
   </div>
 </nav>
- 
+
 <!-- HERO -->
 <section id="hero">
   <div class="hero-inner">
@@ -499,7 +564,7 @@ footer{
     </div>
   </div>
 </section>
- 
+
 <!-- ABOUT -->
 <section id="about">
   <div class="section-wrap reveal">
@@ -533,7 +598,7 @@ footer{
     </div>
   </div>
 </section>
- 
+
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="section-wrap reveal">
@@ -541,7 +606,7 @@ footer{
     <h2 class="sec-title">工作經歷</h2>
     <div class="sec-divider"></div>
     <div class="timeline">
- 
+
       <div class="tl-item">
         <div class="tl-date"><span class="tl-date-label">2025<br>02 – 08</span></div>
         <div class="tl-center"><div class="tl-dot"></div><div class="tl-line"></div></div>
@@ -558,14 +623,14 @@ footer{
           </div>
         </div>
       </div>
- 
+
       <div class="tl-item">
         <div class="tl-date"><span class="tl-date-label">2023<br>至今</span></div>
         <div class="tl-center"><div class="tl-dot"></div><div class="tl-line"></div></div>
         <div class="tl-content">
           <div class="tl-card">
             <div class="tl-role">AI 技術顧問</div>
-            <div class="tl-company">▸ 獨自研究專案 / Freelance</div>
+            <div class="tl-company">▸ 獨立接案 / Freelance</div>
             <ul class="tl-desc">
               <li>協助企業導入生成式 AI 應用於內容生成與智能客服</li>
               <li>開發 Python 自動化腳本與 n8n 工作流提升後台處理效率</li>
@@ -576,25 +641,25 @@ footer{
           </div>
         </div>
       </div>
- 
+
     </div>
   </div>
 </section>
- 
+
 <!-- SKILLS -->
 <section id="skills">
   <div class="section-wrap reveal">
     <div class="sec-eyebrow">SKILLS & CERTS</div>
     <h2 class="sec-title">技能與認證</h2>
     <div class="sec-divider"></div>
- 
+
     <div class="skills-tabs">
       <button class="tab-btn active" onclick="switchTab('cloud')">雲端 &amp; AI</button>
       <button class="tab-btn" onclick="switchTab('dev')">開發工具</button>
       <button class="tab-btn" onclick="switchTab('auto')">自動化</button>
       <button class="tab-btn" onclick="switchTab('data')">資料 &amp; 安全</button>
     </div>
- 
+
     <div class="skills-panel active" id="tab-cloud">
       <div class="skill-item"><div class="skill-top"><span class="skill-name">Azure AI Services</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div><span class="skill-tag">CERTIFIED</span></div>
       <div class="skill-item"><div class="skill-top"><span class="skill-name">GCP (Google Cloud)</span><span class="skill-pct">72%</span></div><div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div><span class="skill-tag">HANDS-ON</span></div>
@@ -602,7 +667,7 @@ footer{
       <div class="skill-item"><div class="skill-top"><span class="skill-name">LangChain / RAG</span><span class="skill-pct">78%</span></div><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div><span class="skill-tag">APPLIED</span></div>
       <div class="skill-item"><div class="skill-top"><span class="skill-name">Whisper / Gemini</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div><span class="skill-tag">INTEGRATED</span></div>
     </div>
- 
+
     <div class="skills-panel" id="tab-dev">
       <div class="skill-item"><div class="skill-top"><span class="skill-name">Python</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div><span class="skill-tag">PRIMARY LANG</span></div>
       <div class="skill-item"><div class="skill-top"><span class="skill-name">Web (HTML/CSS/JS)</span><span class="skill-pct">78%</span></div><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div><span class="skill-tag">FULLSTACK</span></div>
@@ -610,21 +675,21 @@ footer{
       <div class="skill-item"><div class="skill-top"><span class="skill-name">LINE API</span><span class="skill-pct">82%</span></div><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div><span class="skill-tag">DEPLOYED</span></div>
       <div class="skill-item"><div class="skill-top"><span class="skill-name">Git / GitHub</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div><span class="skill-tag">VERSION CTRL</span></div>
     </div>
- 
+
     <div class="skills-panel" id="tab-auto">
       <div class="skill-item"><div class="skill-top"><span class="skill-name">n8n Workflow</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div><span class="skill-tag">LV1 &amp; LV2 CERT</span></div>
       <div class="skill-item"><div class="skill-top"><span class="skill-name">Python 自動化腳本</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div><span class="skill-tag">DEPLOYED</span></div>
       <div class="skill-item"><div class="skill-top"><span class="skill-name">API 整合</span><span class="skill-pct">83%</span></div><div class="skill-bar"><div class="skill-fill" style="width:83%"></div></div><span class="skill-tag">REST / WEBHOOK</span></div>
       <div class="skill-item"><div class="skill-top"><span class="skill-name">工作流架構設計</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div><span class="skill-tag">ENTERPRISE</span></div>
     </div>
- 
+
     <div class="skills-panel" id="tab-data">
       <div class="skill-item"><div class="skill-top"><span class="skill-name">資安 AI 方案設計</span><span class="skill-pct">78%</span></div><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div><span class="skill-tag">ORIGINAL DESIGN</span></div>
       <div class="skill-item"><div class="skill-top"><span class="skill-name">金融數據分析</span><span class="skill-pct">70%</span></div><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div><span class="skill-tag">SINOPAC EXP</span></div>
       <div class="skill-item"><div class="skill-top"><span class="skill-name">資料合規管理</span><span class="skill-pct">72%</span></div><div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div><span class="skill-tag">GDPR AWARE</span></div>
       <div class="skill-item"><div class="skill-top"><span class="skill-name">MySQL 資料管理</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div><span class="skill-tag">PRODUCTION</span></div>
     </div>
- 
+
     <!-- CERTS -->
     <div style="margin-top:2rem">
       <div class="sec-eyebrow" style="margin-bottom:1rem">CERTIFICATIONS</div>
@@ -665,7 +730,7 @@ footer{
     </div>
   </div>
 </section>
- 
+
 <!-- PROJECTS -->
 <section id="projects">
   <div class="section-wrap reveal">
@@ -673,7 +738,7 @@ footer{
     <h2 class="sec-title">專案經驗</h2>
     <div class="sec-divider"></div>
     <div class="projects-grid">
- 
+
       <div class="proj-card featured">
         <div class="proj-head">
           <div class="proj-icon-wrap"><i class="fas fa-shield-halved"></i></div>
@@ -691,7 +756,7 @@ footer{
           <span class="proj-tag">Rule Engine</span>
         </div>
       </div>
- 
+
       <div class="proj-card featured">
         <div class="proj-head">
           <div class="proj-icon-wrap"><i class="fas fa-robot"></i></div>
@@ -710,7 +775,7 @@ footer{
           <span class="proj-tag">n8n</span>
         </div>
       </div>
- 
+
       <div class="proj-card">
         <div class="proj-head">
           <div class="proj-icon-wrap"><i class="fas fa-globe"></i></div>
@@ -727,7 +792,7 @@ footer{
           <span class="proj-tag">MySQL</span>
         </div>
       </div>
- 
+
       <div class="proj-card">
         <div class="proj-head">
           <div class="proj-icon-wrap"><i class="fas fa-book-open"></i></div>
@@ -744,7 +809,7 @@ footer{
           <span class="proj-tag">Vector DB</span>
         </div>
       </div>
- 
+
       <div class="proj-card">
         <div class="proj-head">
           <div class="proj-icon-wrap"><i class="fas fa-film"></i></div>
@@ -761,7 +826,7 @@ footer{
           <span class="proj-tag">推薦系統</span>
         </div>
       </div>
- 
+
       <div class="proj-card">
         <div class="proj-head">
           <div class="proj-icon-wrap"><i class="fas fa-sitemap"></i></div>
@@ -778,11 +843,11 @@ footer{
           <span class="proj-tag">Automation</span>
         </div>
       </div>
- 
+
     </div>
   </div>
 </section>
- 
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-wrap reveal">
@@ -810,7 +875,7 @@ footer{
         <i class="fab fa-linkedin"></i>
         <div><span class="cl-label">LINKEDIN</span><span class="cl-val">王紹鈞 · LinkedIn</span></div>
       </a>
-      <a href="tel:+886919486327" class="contact-link">
+      <a href="tel:+886123456789" class="contact-link">
         <i class="fas fa-phone"></i>
         <div><span class="cl-label">PHONE</span><span class="cl-val">+886 919 486 327</span></div>
       </a>
@@ -821,25 +886,25 @@ footer{
     </div>
   </div>
 </section>
- 
+
 <footer>
   © 2025 王紹鈞 · Cloud AI &amp; Data Intelligence Engineer · Built with ❤️ &amp; Python
 </footer>
- 
+
 <script>
 // ── PARTICLES ──
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
 let pts = [];
 const N = 55;
- 
+
 function resize() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 }
 resize();
 window.addEventListener('resize', resize);
- 
+
 for (let i = 0; i < N; i++) {
   pts.push({
     x: Math.random() * window.innerWidth,
@@ -850,7 +915,7 @@ for (let i = 0; i < N; i++) {
     o: Math.random() * .5 + .2
   });
 }
- 
+
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   pts.forEach(p => {
@@ -879,7 +944,7 @@ function draw() {
   requestAnimationFrame(draw);
 }
 draw();
- 
+
 // ── NAV ──
 function toggleNav() {
   document.getElementById('navLinks').classList.toggle('open');
@@ -887,7 +952,7 @@ function toggleNav() {
 document.querySelectorAll('.nav-links a').forEach(a => {
   a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
 });
- 
+
 // ── TABS ──
 function switchTab(id) {
   document.querySelectorAll('.tab-btn').forEach((b, i) => {
@@ -898,13 +963,13 @@ function switchTab(id) {
     p.classList.toggle('active', p.id === 'tab-' + id);
   });
 }
- 
+
 // ── REVEAL ──
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: .1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
- 
+
 // ── SKILL BARS animate on reveal ──
 const barObserver = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -918,6 +983,127 @@ const barObserver = new IntersectionObserver(entries => {
   });
 }, { threshold: .3 });
 document.querySelectorAll('.skills-panel').forEach(p => barObserver.observe(p));
+</script>
+
+<!-- ════ INTERACTIVE EXTRAS ════ -->
+<script>
+(function(){
+
+  /* 1. CURSOR GLOW */
+  const glow=document.createElement('div');
+  glow.id='cursor-glow';
+  document.body.appendChild(glow);
+  const dot=document.createElement('div');
+  dot.id='cursor-dot';
+  document.body.appendChild(dot);
+
+  let mx=-999,my=-999,gx=-999,gy=-999;
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX; my=e.clientY;
+    dot.style.left=mx+'px'; dot.style.top=my+'px';
+    const el=document.elementFromPoint(mx,my);
+    const onLink=el&&el.closest('a,button,.chip,.skill-item,.proj-card,.stat-card,.cert-card,.tl-card,.contact-link');
+    document.body.classList.toggle('cursor-on-link',!!onLink);
+  });
+  (function animGlow(){
+    gx+=(mx-gx)*.08; gy+=(my-gy)*.08;
+    glow.style.left=gx+'px'; glow.style.top=gy+'px';
+    requestAnimationFrame(animGlow);
+  })();
+  if('ontouchstart' in window){
+    glow.style.display='none'; dot.style.display='none';
+  }
+
+  /* 2. TYPEWRITER */
+  const titles=[
+    'Cloud AI & Data Intelligence Engineer',
+    'Azure AI Engineer Associate',
+    'n8n Automation Specialist (Lv1 & Lv2)',
+    'Python Full-Stack Developer',
+    'AI Security Solution Designer',
+    'GCP Cloud Practitioner',
+  ];
+  const heroEn=document.querySelector('.hero-en');
+  if(heroEn){
+    heroEn.innerHTML='<span id="tw-text"></span><span class="typewriter-cursor"></span>';
+    const tw=document.getElementById('tw-text');
+    let ti=0,ci=0,del=false;
+    const SP=50,SD=24,PE=1900,PS=420;
+    function tick(){
+      const cur=titles[ti];
+      if(!del){
+        tw.textContent=cur.slice(0,++ci);
+        if(ci===cur.length){del=true;setTimeout(tick,PE);return;}
+        setTimeout(tick,SP);
+      } else {
+        tw.textContent=cur.slice(0,--ci);
+        if(ci===0){del=false;ti=(ti+1)%titles.length;setTimeout(tick,PS);return;}
+        setTimeout(tick,SD);
+      }
+    }
+    tick();
+  }
+
+  /* 3. SKILL TOOLTIP */
+  const META={
+    'Azure AI Services':  '持有 Azure AI Engineer Associate 認證，熟悉 Azure OpenAI、Cognitive Services 整合與部署。',
+    'GCP (Google Cloud)': '使用 GCP 部署 Python Web 應用，整合 Cloud Run、Cloud SQL 與 AI Platform。',
+    'Azure OpenAI':       '整合 GPT-4o 於企業 RAG 系統，負責 prompt 工程與 API 成本優化。',
+    'LangChain / RAG':    '使用 LangChain 構建 RAG 問答系統，向量化 PDF 並整合本地向量資料庫。',
+    'Whisper / Gemini':   '在 LINE 客服機器人中整合 Whisper STT 與 Gemini，支援語音多輪對話。',
+    'Python':             '主力語言，用於後端 API、自動化腳本、AI 模型串接與網頁應用開發。',
+    'Web (HTML/CSS/JS)':  '獨立完成響應式網站開發，具備前端切版與互動效果實作能力。',
+    'MySQL':              '設計並管理多個生產資料庫，含客戶資料與 AI 對話歷史儲存。',
+    'LINE API':           '串接 LINE Messaging API 與 Webhook，開發智能客服與通知推播系統。',
+    'Git / GitHub':       '使用 Git 版本控制，以 GitHub Pages 部署靜態網站並管理協作流程。',
+    'n8n Workflow':       '通過 n8n Level 1 & 2 認證，設計企業自動化工作流，整合 20+ 服務。',
+    'Python 自動化腳本':  '撰寫排程腳本自動化數據擷取、報表生成與 API 批次呼叫，省下大量人工。',
+    'API 整合':           '熟悉 REST / Webhook 設計，整合 CRM、LINE、Azure、GCP 等服務 API。',
+    '工作流架構設計':     '為企業設計端到端自動化流程，含錯誤處理、重試機制與監控告警。',
+    '資安 AI 方案設計':   '設計以非 AI 規則引擎為核心的資料安全邊界，防止敏感資料暴露給 LLM。',
+    '金融數據分析':       '於永豐金證券數據金融部協助市場數據分析與報告產出，深化金融 AI 理解。',
+    '資料合規管理':       '支援客戶資料流程優化，具備 GDPR 合規意識與資料最小化設計原則。',
+    'MySQL 資料管理':     '規劃 schema、索引優化與定期備份策略，確保生產環境穩定運行。',
+  };
+  document.querySelectorAll('.skill-item').forEach(item=>{
+    const nameEl=item.querySelector('.skill-name');
+    if(!nameEl) return;
+    const key=nameEl.textContent.trim();
+    const desc=META[key];
+    if(!desc) return;
+    const tip=document.createElement('div');
+    tip.className='skill-tooltip';
+    tip.innerHTML='<div class="skill-tooltip-title">'+key+'</div>'+desc;
+    item.appendChild(tip);
+    item.setAttribute('tabindex','0');
+  });
+
+  /* 4. CARD TILT */
+  const TMAX=12;
+  document.querySelectorAll('.proj-card').forEach(card=>{
+    const shine=document.createElement('div');
+    shine.className='tilt-shine';
+    card.appendChild(shine);
+    card.addEventListener('mouseenter',()=>{
+      card.style.transition='transform .1s linear';
+    });
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5;
+      const y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=
+        'perspective(600px) rotateX('+((-y*TMAX).toFixed(2))+'deg) rotateY('+((x*TMAX).toFixed(2))+'deg) translateY(-6px) scale(1.02)';
+      shine.style.background=
+        'radial-gradient(circle at '+((x+.5)*100)+'% '+((y+.5)*100)+'%,rgba(255,255,255,.10) 0%,transparent 60%)';
+    });
+    card.addEventListener('mouseleave',()=>{
+      card.style.transition='transform .5s cubic-bezier(.23,1,.32,1)';
+      card.style.transform='';
+      setTimeout(()=>{card.style.transition='';},500);
+    });
+  });
+
+})();
 </script>
 </body>
 </html>
