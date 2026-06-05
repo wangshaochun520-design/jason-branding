@@ -51,13 +51,15 @@ nav{
   background:rgba(8,12,20,.85);
   backdrop-filter:blur(14px);
   border-bottom:1px solid var(--border);
+  gap:.75rem;
 }
 .nav-logo{
   font-family:'Syne',sans-serif;font-weight:800;
   font-size:clamp(.9rem,2.5vw,1.1rem);
   color:var(--cyan);letter-spacing:.04em;
+  flex-shrink:0;
 }
-.nav-links{display:flex;gap:clamp(.6rem,2vw,1.5rem)}
+.nav-links{display:flex;gap:clamp(.6rem,2vw,1.5rem);flex:1;justify-content:center}
 .nav-links a{
   font-size:clamp(.72rem,1.6vw,.82rem);
   color:var(--text2);text-decoration:none;
@@ -66,13 +68,34 @@ nav{
   transition:color .2s;
 }
 .nav-links a:hover{color:var(--cyan)}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+/* ── LANG SWITCHER (inside nav) ── */
+#lang-switcher{
+  display:flex;gap:.3rem;align-items:center;flex-shrink:0;
+}
+.lang-btn{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.62rem;font-weight:600;letter-spacing:.06em;
+  padding:.26rem .55rem;border-radius:5px;
+  border:1px solid var(--border2);
+  background:rgba(8,12,20,.5);
+  color:var(--text3);cursor:pointer;
+  transition:all .2s;line-height:1;
+  white-space:nowrap;
+}
+.lang-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.lang-btn.active{
+  border-color:var(--cyan);color:var(--cyan);
+  background:rgba(0,212,255,.1);
+  box-shadow:0 0 8px rgba(0,212,255,.2);
+}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;flex-shrink:0}
 .nav-burger span{display:block;width:22px;height:2px;background:var(--text2);border-radius:2px;transition:.3s}
-@media(max-width:560px){
+@media(max-width:640px){
   .nav-links{display:none;position:fixed;top:53px;left:0;right:0;background:var(--bg2);
     flex-direction:column;padding:1.25rem 1.5rem;gap:.9rem;border-bottom:1px solid var(--border)}
   .nav-links.open{display:flex}
   .nav-burger{display:flex}
+  .lang-btn{font-size:.56rem;padding:.2rem .42rem}
 }
 
 /* ── HERO ── */
@@ -525,13 +548,18 @@ body.cursor-on-link #cursor-dot{
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">王紹鈞 <span style="color:var(--text3)">/ WSJ</span></div>
+  <div class="nav-logo" id="nav-logo">王紹鈞 <span style="color:var(--text3)" id="nav-logo-sub">/ WSJ</span></div>
   <div class="nav-links" id="navLinks">
-    <a href="#about">關於</a>
-    <a href="#experience">經歷</a>
-    <a href="#skills">技能</a>
-    <a href="#projects">專案</a>
-    <a href="#contact">聯絡</a>
+    <a href="#about"      data-zh="關於"   data-en="About"    data-ja="自己紹介">關於</a>
+    <a href="#experience" data-zh="經歷"   data-en="Experience" data-ja="経歴">經歷</a>
+    <a href="#skills"     data-zh="技能"   data-en="Skills"   data-ja="スキル">技能</a>
+    <a href="#projects"   data-zh="專案"   data-en="Projects" data-ja="プロジェクト">專案</a>
+    <a href="#contact"    data-zh="聯絡"   data-en="Contact"  data-ja="連絡">聯絡</a>
+  </div>
+  <div id="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('zh')" id="btn-zh">中文</button>
+    <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+    <button class="lang-btn" onclick="setLang('ja')" id="btn-ja">日本語</button>
   </div>
   <div class="nav-burger" id="burger" onclick="toggleNav()" aria-label="選單">
     <span></span><span></span><span></span>
@@ -541,10 +569,10 @@ body.cursor-on-link #cursor-dot{
 <!-- HERO -->
 <section id="hero">
   <div class="hero-inner">
-    <div class="hero-tag"><i class="fas fa-circle"></i> AVAILABLE FOR OPPORTUNITIES</div>
-    <h1 class="hero-name">王紹鈞</h1>
+    <div class="hero-tag"><i class="fas fa-circle"></i> <span data-zh="歡迎合作洽談" data-en="AVAILABLE FOR OPPORTUNITIES" data-ja="お仕事のご依頼受付中">AVAILABLE FOR OPPORTUNITIES</span></div>
+    <h1 class="hero-name" data-zh="王紹鈞" data-en="Wangshaochun" data-ja="王紹鈞">王紹鈞</h1>
     <div class="hero-en">Cloud AI &amp; Data Intelligence Engineer</div>
-    <p class="hero-desc">
+    <p class="hero-desc" data-zh="橋接企業需求與尖端 AI 技術的實踐者。深耕雲端自動化、生成式 AI 整合與資料安全解決方案，將複雜的技術概念轉化為可落地的商業價值。" data-en="A practitioner bridging enterprise needs and cutting-edge AI technology. Specializing in cloud automation, generative AI integration, and data security solutions — turning complex tech concepts into real business value." data-ja="企業ニーズと最先端 AI 技術を橋渡しする実践者。クラウド自動化、生成 AI 統合、データセキュリティソリューションを専門とし、複雑な技術概念を実際のビジネス価値に転換します。">
       橋接企業需求與尖端 AI 技術的實踐者。深耕雲端自動化、生成式 AI 整合與資料安全解決方案，
       將複雜的技術概念轉化為可落地的商業價值。
     </p>
@@ -559,8 +587,8 @@ body.cursor-on-link #cursor-dot{
       <span class="chip">RAG</span>
     </div>
     <div class="hero-ctas">
-      <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> 聯絡我</a>
-      <a href="#projects" class="btn btn-ghost"><i class="fas fa-code-branch"></i> 查看專案</a>
+      <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> <span data-zh="聯絡我" data-en="Contact Me" data-ja="お問い合わせ">聯絡我</span></a>
+      <a href="#projects" class="btn btn-ghost"><i class="fas fa-code-branch"></i> <span data-zh="查看專案" data-en="View Projects" data-ja="プロジェクトを見る">查看專案</span></a>
     </div>
   </div>
 </section>
@@ -569,9 +597,9 @@ body.cursor-on-link #cursor-dot{
 <section id="about">
   <div class="section-wrap reveal">
     <div class="sec-eyebrow">ABOUT ME</div>
-    <h2 class="sec-title">關於我</h2>
+    <h2 class="sec-title" data-zh="關於我" data-en="About Me" data-ja="自己紹介">關於我</h2>
     <div class="sec-divider"></div>
-    <p class="about-text">
+    <p class="about-text" data-zh="新世代 AI 探究與雲端數據轉型的先驅者。擁有永豐金證券數據金融部的實戰歷練，深度理解金融數據場景下的 AI 應用需求。持 Azure AI Engineer Associate 認證，並通過 n8n Level 1 &amp; 2 自動化工程師測驗，具備從架構設計到系統整合的全端能力。核心專注於資安 AI 方案設計、工作流自動化與企業 LLM 落地，以「不過度依賴 AI 決策」的原則守護用戶資料安全。" data-en="A pioneer in next-gen AI research and cloud data transformation. With hands-on experience at SinoPac Securities Data Finance Division, I have a deep understanding of AI application needs in financial data scenarios. Certified Azure AI Engineer Associate and n8n Level 1 &amp; 2 Automation Engineer. Core focus: AI security solution design, workflow automation, and enterprise LLM deployment — guided by the principle of not over-relying on AI decisions to protect user data." data-ja="次世代 AI 探究とクラウドデータ変革のパイオニア。永豊金証券データ金融部での実務経験を持ち、金融データシナリオにおける AI 応用ニーズを深く理解しています。Azure AI Engineer Associate 認定取得済み、n8n Level 1 &amp; 2 合格。AIセキュリティソリューション設計、ワークフロー自動化、企業向け LLM 導入を専門とし、「AI 判断への過度な依存を避ける」原則でユーザーデータを守ります。">
       新世代 AI 探究與雲端數據轉型的先驅者。擁有永豐金證券數據金融部的實戰歷練，
       深度理解金融數據場景下的 AI 應用需求。持 Azure AI Engineer Associate 認證，
       並通過 n8n Level 1 &amp; 2 自動化工程師測驗，具備從架構設計到系統整合的全端能力。
@@ -581,19 +609,19 @@ body.cursor-on-link #cursor-dot{
     <div class="stat-cards">
       <div class="stat-card">
         <div class="stat-num">6+</div>
-        <div class="stat-label">月金融業實戰</div>
+        <div class="stat-label" data-zh="月金融業實戰" data-en="Months in Finance" data-ja="ヶ月金融実務">月金融業實戰</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">4+</div>
-        <div class="stat-label">AI 認證通過</div>
+        <div class="stat-label" data-zh="AI 認證通過" data-en="AI Certifications" data-ja="AI 資格取得">AI 認證通過</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">6+</div>
-        <div class="stat-label">核心專案完成</div>
+        <div class="stat-label" data-zh="核心專案完成" data-en="Projects Completed" data-ja="プロジェクト完了">核心專案完成</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">3</div>
-        <div class="stat-label">雲端平台整合</div>
+        <div class="stat-label" data-zh="雲端平台整合" data-en="Cloud Platforms" data-ja="クラウド統合">雲端平台整合</div>
       </div>
     </div>
   </div>
@@ -603,7 +631,7 @@ body.cursor-on-link #cursor-dot{
 <section id="experience">
   <div class="section-wrap reveal">
     <div class="sec-eyebrow">EXPERIENCE</div>
-    <h2 class="sec-title">工作經歷</h2>
+    <h2 class="sec-title" data-zh="工作經歷" data-en="Experience" data-ja="職務経歴">工作經歷</h2>
     <div class="sec-divider"></div>
     <div class="timeline">
 
@@ -612,31 +640,31 @@ body.cursor-on-link #cursor-dot{
         <div class="tl-center"><div class="tl-dot"></div><div class="tl-line"></div></div>
         <div class="tl-content">
           <div class="tl-card">
-            <div class="tl-role">數據金融部 助理</div>
+            <div class="tl-role" data-zh="數據金融部 助理" data-en="Data Finance Division — Assistant" data-ja="データ金融部 アシスタント">數據金融部 助理</div>
             <div class="tl-company">▸ 永豐金證券 SinoPac Securities</div>
             <ul class="tl-desc">
-              <li>協助數據金融部進行市場數據分析與報告產出</li>
-              <li>參與 AI 輔助決策工具的評估與試行</li>
-              <li>支援客戶數據管理流程優化，確保資料合規性</li>
-              <li>深化金融科技場景下的數據應用實戰理解</li>
+              <li data-zh="協助數據金融部進行市場數據分析與報告產出" data-en="Assisted in market data analysis and report generation for the Data Finance Division" data-ja="データ金融部における市場データ分析・レポート作成を支援">協助數據金融部進行市場數據分析與報告產出</li>
+              <li data-zh="參與 AI 輔助決策工具的評估與試行" data-en="Participated in evaluation and piloting of AI-assisted decision-making tools" data-ja="AI 意思決定支援ツールの評価と試行に参加">參與 AI 輔助決策工具的評估與試行</li>
+              <li data-zh="支援客戶數據管理流程優化，確保資料合規性" data-en="Supported optimization of client data management processes to ensure compliance" data-ja="顧客データ管理プロセスの最適化を支援し、コンプライアンスを確保">支援客戶數據管理流程優化，確保資料合規性</li>
+              <li data-zh="深化金融科技場景下的數據應用實戰理解" data-en="Deepened practical understanding of data applications in fintech scenarios" data-ja="フィンテックシナリオにおけるデータ活用の実践的理解を深化">深化金融科技場景下的數據應用實戰理解</li>
             </ul>
           </div>
         </div>
       </div>
 
       <div class="tl-item">
-        <div class="tl-date"><span class="tl-date-label">2023<br>至今</span></div>
+        <div class="tl-date"><span class="tl-date-label" data-zh="2023 至今" data-en="2023 Present" data-ja="2023 現在">2023<br>至今</span></div>
         <div class="tl-center"><div class="tl-dot"></div><div class="tl-line"></div></div>
         <div class="tl-content">
           <div class="tl-card">
-            <div class="tl-role">AI 技術顧問</div>
-            <div class="tl-company">▸ 獨立接案 / Freelance</div>
+            <div class="tl-role" data-zh="AI 技術顧問" data-en="AI Technology Consultant" data-ja="AI テクノロジーコンサルタント">AI 技術顧問</div>
+            <div class="tl-company" data-zh="▸ 獨立接案 / Freelance" data-en="▸ Independent / Freelance" data-ja="▸ フリーランス / 独立">▸ 獨立接案 / Freelance</div>
             <ul class="tl-desc">
-              <li>協助企業導入生成式 AI 應用於內容生成與智能客服</li>
-              <li>開發 Python 自動化腳本與 n8n 工作流提升後台處理效率</li>
-              <li>整合 Azure AI 與 GCP 服務至企業既有系統</li>
-              <li>設計資安 AI 方案：以非 AI 機制保障用戶資料安全邊界</li>
-              <li>進行 AI 技術可行性分析、PoC 驗證與落地規劃</li>
+              <li data-zh="協助企業導入生成式 AI 應用於內容生成與智能客服" data-en="Helped enterprises adopt generative AI for content creation and intelligent customer service" data-ja="コンテンツ生成・インテリジェントカスタマーサービスへの生成 AI 導入を支援">協助企業導入生成式 AI 應用於內容生成與智能客服</li>
+              <li data-zh="開發 Python 自動化腳本與 n8n 工作流提升後台處理效率" data-en="Developed Python automation scripts and n8n workflows to improve backend processing efficiency" data-ja="Python 自動化スクリプトと n8n ワークフローでバックエンド処理効率を向上">開發 Python 自動化腳本與 n8n 工作流提升後台處理效率</li>
+              <li data-zh="整合 Azure AI 與 GCP 服務至企業既有系統" data-en="Integrated Azure AI and GCP services into existing enterprise systems" data-ja="Azure AI と GCP サービスを既存企業システムに統合">整合 Azure AI 與 GCP 服務至企業既有系統</li>
+              <li data-zh="設計資安 AI 方案：以非 AI 機制保障用戶資料安全邊界" data-en="Designed AI security solutions: using non-AI mechanisms to protect user data boundaries" data-ja="AI セキュリティソリューションを設計：非 AI メカニズムでユーザーデータの安全境界を確保">設計資安 AI 方案：以非 AI 機制保障用戶資料安全邊界</li>
+              <li data-zh="進行 AI 技術可行性分析、PoC 驗證與落地規劃" data-en="Conducted AI feasibility analysis, PoC validation, and implementation planning" data-ja="AI 実現可能性分析、PoC 検証、導入計画を実施">進行 AI 技術可行性分析、PoC 驗證與落地規劃</li>
             </ul>
           </div>
         </div>
@@ -650,14 +678,14 @@ body.cursor-on-link #cursor-dot{
 <section id="skills">
   <div class="section-wrap reveal">
     <div class="sec-eyebrow">SKILLS & CERTS</div>
-    <h2 class="sec-title">技能與認證</h2>
+    <h2 class="sec-title" data-zh="技能與認證" data-en="Skills & Certifications" data-ja="スキルと資格">技能與認證</h2>
     <div class="sec-divider"></div>
 
     <div class="skills-tabs">
-      <button class="tab-btn active" onclick="switchTab('cloud')">雲端 &amp; AI</button>
-      <button class="tab-btn" onclick="switchTab('dev')">開發工具</button>
-      <button class="tab-btn" onclick="switchTab('auto')">自動化</button>
-      <button class="tab-btn" onclick="switchTab('data')">資料 &amp; 安全</button>
+      <button class="tab-btn active" onclick="switchTab('cloud')" data-zh="雲端 &amp; AI" data-en="Cloud &amp; AI" data-ja="クラウド &amp; AI">雲端 &amp; AI</button>
+      <button class="tab-btn" onclick="switchTab('dev')" data-zh="開發工具" data-en="Dev Tools" data-ja="開発ツール">開發工具</button>
+      <button class="tab-btn" onclick="switchTab('auto')" data-zh="自動化" data-en="Automation" data-ja="自動化">自動化</button>
+      <button class="tab-btn" onclick="switchTab('data')" data-zh="資料 &amp; 安全" data-en="Data &amp; Security" data-ja="データ &amp; セキュリティ">資料 &amp; 安全</button>
     </div>
 
     <div class="skills-panel active" id="tab-cloud">
@@ -735,7 +763,7 @@ body.cursor-on-link #cursor-dot{
 <section id="projects">
   <div class="section-wrap reveal">
     <div class="sec-eyebrow">PROJECTS</div>
-    <h2 class="sec-title">專案經驗</h2>
+    <h2 class="sec-title" data-zh="專案經驗" data-en="Projects" data-ja="プロジェクト">專案經驗</h2>
     <div class="sec-divider"></div>
     <div class="projects-grid">
 
@@ -744,8 +772,8 @@ body.cursor-on-link #cursor-dot{
           <div class="proj-icon-wrap"><i class="fas fa-shield-halved"></i></div>
           <span class="proj-feat">FEATURED</span>
         </div>
-        <div class="proj-name">資安 AI 資料保護方案</div>
-        <p class="proj-desc">
+        <div class="proj-name" data-zh="資安 AI 資料保護方案" data-en="AI Data Security Solution" data-ja="AI データセキュリティソリューション">資安 AI 資料保護方案</div>
+        <p class="proj-desc" data-zh="設計以「非 AI 機制」為核心的資料安全架構：在 AI 決策流程的外層建立傳統規則引擎與存取控制邊界，確保敏感用戶資料不直接暴露於大型語言模型的訓練或推論過程中。" data-en="Designed a data security architecture centered on non-AI mechanisms: establishing traditional rule engines and access control boundaries outside the AI decision pipeline, ensuring sensitive user data is never directly exposed to LLM training or inference." data-ja="非 AI メカニズムを中核とするデータセキュリティアーキテクチャを設計。AI 決定パイプラインの外側に従来のルールエンジンとアクセス制御境界を構築し、機密ユーザーデータが LLM の学習・推論に直接さらされないことを保証。">
           設計以「非 AI 機制」為核心的資料安全架構：在 AI 決策流程的外層建立傳統規則引擎與
           存取控制邊界，確保敏感用戶資料不直接暴露於大型語言模型的訓練或推論過程中。
         </p>
@@ -762,8 +790,8 @@ body.cursor-on-link #cursor-dot{
           <div class="proj-icon-wrap"><i class="fas fa-robot"></i></div>
           <span class="proj-feat">DEPLOYED</span>
         </div>
-        <div class="proj-name">自動化客服機器人</div>
-        <p class="proj-desc">
+        <div class="proj-name" data-zh="自動化客服機器人" data-en="Automated Customer Service Bot" data-ja="自動化カスタマーサービスボット">自動化客服機器人</div>
+        <p class="proj-desc" data-zh="基於 Whisper 語音辨識與 Gemini LLM 的 LINE 整合客服系統，支援語音轉文字、多輪對話與自動工單分派。" data-en="A LINE-integrated customer service system based on Whisper speech recognition and Gemini LLM, supporting voice-to-text, multi-turn dialogue, and automatic ticket dispatch." data-ja="Whisper 音声認識と Gemini LLM を基盤とした LINE 統合カスタマーサービスシステム。音声テキスト変換、マルチターン対話、自動チケット振り分けをサポート。">
           基於 Whisper 語音辨識與 Gemini LLM 的 LINE 整合客服系統，
           支援語音轉文字、多輪對話與自動工單分派。
         </p>
@@ -780,8 +808,8 @@ body.cursor-on-link #cursor-dot{
         <div class="proj-head">
           <div class="proj-icon-wrap"><i class="fas fa-globe"></i></div>
         </div>
-        <div class="proj-name">Python 全端網頁應用</div>
-        <p class="proj-desc">
+        <div class="proj-name" data-zh="Python 全端網頁應用" data-en="Python Full-Stack Web App" data-ja="Python フルスタック Web アプリ">Python 全端網頁應用</div>
+        <p class="proj-desc" data-zh="使用 Python 後端（Flask / FastAPI）搭配前端技術，於 GCP 雲端部署的完整 Web 應用程式，整合 AI 功能與資料庫管理。" data-en="A complete web application using Python backend (Flask / FastAPI) with frontend technologies, deployed on GCP, integrating AI features and database management." data-ja="Python バックエンド（Flask / FastAPI）とフロントエンド技術を使用した完全な Web アプリケーション。GCP にデプロイし、AI 機能とデータベース管理を統合。">
           使用 Python 後端（Flask / FastAPI）搭配前端技術，於 GCP 雲端部署的完整 Web 應用程式，
           整合 AI 功能與資料庫管理。
         </p>
@@ -797,8 +825,8 @@ body.cursor-on-link #cursor-dot{
         <div class="proj-head">
           <div class="proj-icon-wrap"><i class="fas fa-book-open"></i></div>
         </div>
-        <div class="proj-name">烘焙知識 RAG 機器人</div>
-        <p class="proj-desc">
+        <div class="proj-name" data-zh="烘焙知識 RAG 機器人" data-en="Baking Knowledge RAG Bot" data-ja="製菓知識 RAG ボット">烘焙知識 RAG 機器人</div>
+        <p class="proj-desc" data-zh="使用 LangChain RAG 架構的 PDF 問答系統，讓用戶上傳烘焙手冊後即可進行精準的知識問答，向量化儲存於本地向量資料庫。" data-en="A PDF Q&amp;A system using LangChain RAG architecture. Users upload baking manuals and can immediately ask precise questions, with content vectorized and stored in a local vector database." data-ja="LangChain RAG アーキテクチャを使用した PDF Q&amp;A システム。ユーザーが製菓マニュアルをアップロードすると、ローカルベクターデータベースにベクトル化して格納し、正確な質問応答が可能。">
           使用 LangChain RAG 架構的 PDF 問答系統，讓用戶上傳烘焙手冊後即可進行
           精準的知識問答，向量化儲存於本地向量資料庫。
         </p>
@@ -814,8 +842,8 @@ body.cursor-on-link #cursor-dot{
         <div class="proj-head">
           <div class="proj-icon-wrap"><i class="fas fa-film"></i></div>
         </div>
-        <div class="proj-name">動漫推薦 AI 助理</div>
-        <p class="proj-desc">
+        <div class="proj-name" data-zh="動漫推薦 AI 助理" data-en="Anime Recommendation AI" data-ja="アニメ推薦 AI アシスタント">動漫推薦 AI 助理</div>
+        <p class="proj-desc" data-zh="結合用戶偏好分析與 AI 推薦引擎，為二次元愛好者打造個人化推薦體驗，支援關鍵字搜尋與情境式對話推薦。" data-en="Combines user preference analysis with an AI recommendation engine to deliver personalized experiences for anime fans, supporting keyword search and context-aware conversational recommendations." data-ja="ユーザー嗜好分析と AI 推薦エンジンを組み合わせ、アニメファン向けにパーソナライズされた体験を提供。キーワード検索とコンテキスト対話推薦をサポート。">
           結合用戶偏好分析與 AI 推薦引擎，為二次元愛好者打造個人化推薦體驗，
           支援關鍵字搜尋與情境式對話推薦。
         </p>
@@ -823,7 +851,7 @@ body.cursor-on-link #cursor-dot{
           <span class="proj-tag">Python</span>
           <span class="proj-tag">AI</span>
           <span class="proj-tag">Web App</span>
-          <span class="proj-tag">推薦系統</span>
+          <span class="proj-tag" data-zh="推薦系統" data-en="Recommender" data-ja="推薦システム">推薦系統</span>
         </div>
       </div>
 
@@ -831,8 +859,8 @@ body.cursor-on-link #cursor-dot{
         <div class="proj-head">
           <div class="proj-icon-wrap"><i class="fas fa-sitemap"></i></div>
         </div>
-        <div class="proj-name">企業 n8n 自動化工作流</div>
-        <p class="proj-desc">
+        <div class="proj-name" data-zh="企業 n8n 自動化工作流" data-en="Enterprise n8n Automation Workflow" data-ja="企業向け n8n 自動化ワークフロー">企業 n8n 自動化工作流</div>
+        <p class="proj-desc" data-zh="設計並部署多條 n8n 自動化工作流，整合 CRM、LINE 通知、資料庫同步與 AI 摘要生成，大幅降低人工作業成本。" data-en="Designed and deployed multiple n8n automation workflows integrating CRM, LINE notifications, database sync, and AI summary generation — significantly reducing manual workload." data-ja="CRM、LINE 通知、データベース同期、AI 要約生成を統合した複数の n8n 自動化ワークフローを設計・デプロイ。人的作業コストを大幅に削減。">
           設計並部署多條 n8n 自動化工作流，整合 CRM、LINE 通知、資料庫同步與
           AI 摘要生成，大幅降低人工作業成本。
         </p>
@@ -852,17 +880,17 @@ body.cursor-on-link #cursor-dot{
 <section id="contact">
   <div class="section-wrap reveal">
     <div class="sec-eyebrow">CONTACT</div>
-    <h2 class="sec-title">聯絡方式</h2>
+    <h2 class="sec-title" data-zh="聯絡方式" data-en="Contact" data-ja="お問い合わせ">聯絡方式</h2>
     <div class="sec-divider"></div>
     <div class="contact-box">
-      <div class="contact-headline">讓我們一起打造 AI 解決方案 🚀</div>
-      <p class="contact-sub">無論是企業 AI 導入、自動化工作流設計，或資安方案評估，歡迎聯繫討論！</p>
+      <div class="contact-headline" data-zh="讓我們一起打造 AI 解決方案 🚀" data-en="Lets Build AI Solutions Together 🚀" data-ja="一緒に AI ソリューションを構築しましょう 🚀">讓我們一起打造 AI 解決方案 🚀</div>
+      <p class="contact-sub" data-zh="無論是企業 AI 導入、自動化工作流設計，或資安方案評估，歡迎聯繫討論！" data-en="Whether it is enterprise AI adoption, automation workflow design, or security solution evaluation — feel free to reach out!" data-ja="企業 AI 導入、自動化ワークフロー設計、セキュリティソリューション評価など、お気軽にご連絡ください！">無論是企業 AI 導入、自動化工作流設計，或資安方案評估，歡迎聯繫討論！</p>
       <div class="contact-btns">
         <a href="https://calendly.com/alex-ai-consulting" target="_blank" class="btn btn-cyan">
-          <i class="fas fa-calendar-alt"></i> 預約免費諮詢
+          <i class="fas fa-calendar-alt"></i> <span data-zh="預約免費諮詢" data-en="Book a Free Call" data-ja="無料相談を予約">預約免費諮詢</span>
         </a>
         <a href="mailto:wangshaochun520@gmail.com" class="btn btn-ghost" style="border-color:var(--border2)">
-          <i class="fas fa-envelope"></i> 發送 Email
+          <i class="fas fa-envelope"></i> <span data-zh="發送 Email" data-en="Send Email" data-ja="メールを送る">發送 Email</span>
         </a>
       </div>
     </div>
@@ -873,9 +901,9 @@ body.cursor-on-link #cursor-dot{
       </a>
       <a href="https://www.linkedin.com/in/%E7%B4%B9%E9%88%9E-%E7%8E%8B-b6b866396/?skipRedirect=true" target="_blank" class="contact-link">
         <i class="fab fa-linkedin"></i>
-        <div><span class="cl-label">LINKEDIN</span><span class="cl-val">王紹鈞 · LinkedIn</span></div>
+        <div><span class="cl-label">LINKEDIN</span><span class="cl-val" data-zh="王紹鈞 · LinkedIn" data-en="Wangshaochun · LinkedIn" data-ja="王紹鈞 · LinkedIn">王紹鈞 · LinkedIn</span></div>
       </a>
-      <a href="tel:+886123456789" class="contact-link">
+      <a href="tel:+886919486327" class="contact-link">
         <i class="fas fa-phone"></i>
         <div><span class="cl-label">PHONE</span><span class="cl-val">+886 919 486 327</span></div>
       </a>
@@ -888,7 +916,7 @@ body.cursor-on-link #cursor-dot{
 </section>
 
 <footer>
-  © 2025 王紹鈞 · Cloud AI &amp; Data Intelligence Engineer · Built with ❤️ &amp; Python
+  <span data-zh="© 2025 王紹鈞 · Cloud AI &amp; Data Intelligence Engineer · Built with ❤️ &amp; Python" data-en="© 2025 Wangshaochun · Cloud AI &amp; Data Intelligence Engineer · Built with ❤️ &amp; Python" data-ja="© 2025 王紹鈞 · クラウド AI &amp; データインテリジェンスエンジニア · Built with ❤️ &amp; Python">© 2025 王紹鈞 · Cloud AI &amp; Data Intelligence Engineer · Built with ❤️ &amp; Python</span>
 </footer>
 
 <script>
@@ -1015,14 +1043,6 @@ document.querySelectorAll('.skills-panel').forEach(p => barObserver.observe(p));
   }
 
   /* 2. TYPEWRITER */
-  const titles=[
-    'Cloud AI & Data Intelligence Engineer',
-    'Azure AI Engineer Associate',
-    'n8n Automation Specialist (Lv1 & Lv2)',
-    'Python Full-Stack Developer',
-    'AI Security Solution Designer',
-    'GCP Cloud Practitioner',
-  ];
   const heroEn=document.querySelector('.hero-en');
   if(heroEn){
     heroEn.innerHTML='<span id="tw-text"></span><span class="typewriter-cursor"></span>';
@@ -1030,6 +1050,8 @@ document.querySelectorAll('.skills-panel').forEach(p => barObserver.observe(p));
     let ti=0,ci=0,del=false;
     const SP=50,SD=24,PE=1900,PS=420;
     function tick(){
+      const titles = window._twTitles || ['Cloud AI & Data Intelligence Engineer'];
+      if(ti >= titles.length) ti = 0;
       const cur=titles[ti];
       if(!del){
         tw.textContent=cur.slice(0,++ci);
@@ -1104,6 +1126,152 @@ document.querySelectorAll('.skills-panel').forEach(p => barObserver.observe(p));
   });
 
 })();
+</script>
+
+<script>
+function setLang(lang) {
+  // Update active button
+  ['zh','en','ja'].forEach(l => {
+    document.getElementById('btn-'+l).classList.toggle('active', l === lang);
+  });
+
+  // Handle nav-logo name separately (has child span, can't use innerHTML on data attr with tags)
+  const logoNames = { zh: '王紹鈞', en: 'Wangshaochun', ja: '王紹鈞' };
+  const logoEl = document.getElementById('nav-logo');
+  if (logoEl) {
+    logoEl.childNodes[0].textContent = logoNames[lang] + ' ';
+  }
+
+  // Update all elements with data-{lang} attributes
+  document.querySelectorAll('[data-zh]').forEach(el => {
+    const val = el.getAttribute('data-'+lang);
+    if (val !== null) el.innerHTML = val;
+  });
+
+  // Typewriter titles per language
+  const titleMap = {
+    zh: [
+      'Cloud AI & Data Intelligence Engineer',
+      'Azure AI 工程師助理',
+      'n8n 自動化專家 (Lv1 & Lv2)',
+      'Python 全端開發者',
+      'AI 資安方案設計師',
+      'GCP 雲端從業者',
+    ],
+    en: [
+      'Cloud AI & Data Intelligence Engineer',
+      'Azure AI Engineer Associate',
+      'n8n Automation Specialist (Lv1 & Lv2)',
+      'Python Full-Stack Developer',
+      'AI Security Solution Designer',
+      'GCP Cloud Practitioner',
+    ],
+    ja: [
+      'クラウド AI & データインテリジェンスエンジニア',
+      'Azure AI エンジニアアソシエイト',
+      'n8n 自動化スペシャリスト (Lv1 & Lv2)',
+      'Python フルスタック開発者',
+      'AI セキュリティソリューションデザイナー',
+      'GCP クラウドプラクティショナー',
+    ]
+  };
+  window._twTitles = titleMap[lang];
+
+  // Update html lang attribute
+  document.documentElement.lang = lang === 'zh' ? 'zh-TW' : lang === 'ja' ? 'ja' : 'en';
+
+  // Skill tooltips per language
+  const metaMap = {
+    zh: {
+      'Azure AI Services':  '持有 Azure AI Engineer Associate 認證，熟悉 Azure OpenAI、Cognitive Services 整合與部署。',
+      'GCP (Google Cloud)': '使用 GCP 部署 Python Web 應用，整合 Cloud Run、Cloud SQL 與 AI Platform。',
+      'Azure OpenAI':       '整合 GPT-4o 於企業 RAG 系統，負責 prompt 工程與 API 成本優化。',
+      'LangChain / RAG':    '使用 LangChain 構建 RAG 問答系統，向量化 PDF 並整合本地向量資料庫。',
+      'Whisper / Gemini':   '在 LINE 客服機器人中整合 Whisper STT 與 Gemini，支援語音多輪對話。',
+      'Python':             '主力語言，用於後端 API、自動化腳本、AI 模型串接與網頁應用開發。',
+      'Web (HTML/CSS/JS)':  '獨立完成響應式網站開發，具備前端切版與互動效果實作能力。',
+      'MySQL':              '設計並管理多個生產資料庫，含客戶資料與 AI 對話歷史儲存。',
+      'LINE API':           '串接 LINE Messaging API 與 Webhook，開發智能客服與通知推播系統。',
+      'Git / GitHub':       '使用 Git 版本控制，以 GitHub Pages 部署靜態網站並管理協作流程。',
+      'n8n Workflow':       '通過 n8n Level 1 & 2 認證，設計企業自動化工作流，整合 20+ 服務。',
+      'Python 自動化腳本':  '撰寫排程腳本自動化數據擷取、報表生成與 API 批次呼叫，省下大量人工。',
+      'API 整合':           '熟悉 REST / Webhook 設計，整合 CRM、LINE、Azure、GCP 等服務 API。',
+      '工作流架構設計':     '為企業設計端到端自動化流程，含錯誤處理、重試機制與監控告警。',
+      '資安 AI 方案設計':   '設計以非 AI 規則引擎為核心的資料安全邊界，防止敏感資料暴露給 LLM。',
+      '金融數據分析':       '於永豐金證券數據金融部協助市場數據分析與報告產出，深化金融 AI 理解。',
+      '資料合規管理':       '支援客戶資料流程優化，具備 GDPR 合規意識與資料最小化設計原則。',
+      'MySQL 資料管理':     '規劃 schema、索引優化與定期備份策略，確保生產環境穩定運行。',
+    },
+    en: {
+      'Azure AI Services':  'Certified Azure AI Engineer Associate. Proficient in Azure OpenAI and Cognitive Services integration and deployment.',
+      'GCP (Google Cloud)': 'Deployed Python web apps on GCP, integrating Cloud Run, Cloud SQL, and AI Platform.',
+      'Azure OpenAI':       'Integrated GPT-4o into enterprise RAG systems, handling prompt engineering and API cost optimization.',
+      'LangChain / RAG':    'Built RAG Q&A systems using LangChain, vectorizing PDFs into a local vector database.',
+      'Whisper / Gemini':   'Integrated Whisper STT and Gemini into LINE customer service bots for multi-turn voice conversations.',
+      'Python':             'Primary language for backend APIs, automation scripts, AI model integration, and web app development.',
+      'Web (HTML/CSS/JS)':  'Independently built responsive websites with frontend layouts and interactive effects.',
+      'MySQL':              'Designed and managed multiple production databases including customer data and AI conversation history.',
+      'LINE API':           'Connected LINE Messaging API and Webhooks to build intelligent customer service and push notification systems.',
+      'Git / GitHub':       'Used Git for version control; deployed static sites via GitHub Pages and managed collaborative workflows.',
+      'n8n Workflow':       'Passed n8n Level 1 & 2 certification; designed enterprise automation workflows integrating 20+ services.',
+      'Python 自動化腳本':  'Wrote scheduled scripts to automate data collection, report generation, and batch API calls, saving significant manual effort.',
+      'API 整合':           'Experienced in REST / Webhook design, integrating CRM, LINE, Azure, and GCP service APIs.',
+      '工作流架構設計':     'Designed end-to-end enterprise automation processes including error handling, retry logic, and monitoring alerts.',
+      '資安 AI 方案設計':   'Designed data security boundaries using non-AI rule engines to prevent sensitive data from being exposed to LLMs.',
+      '金融數據分析':       'Assisted with market data analysis and report generation at SinoPac Securities\' Data Finance Division.',
+      '資料合規管理':       'Supported customer data process optimization with GDPR compliance awareness and data minimization principles.',
+      'MySQL 資料管理':     'Planned schema design, index optimization, and regular backup strategies to ensure stable production environments.',
+    },
+    ja: {
+      'Azure AI Services':  'Azure AI Engineer Associate 認定取得済み。Azure OpenAI と Cognitive Services の統合・デプロイに精通。',
+      'GCP (Google Cloud)': 'GCP に Python Web アプリをデプロイ。Cloud Run、Cloud SQL、AI Platform を統合。',
+      'Azure OpenAI':       '企業向け RAG システムに GPT-4o を統合。プロンプトエンジニアリングと API コスト最適化を担当。',
+      'LangChain / RAG':    'LangChain を使用した RAG Q&A システムを構築。PDF をベクトル化してローカルベクターDBに格納。',
+      'Whisper / Gemini':   'LINE カスタマーサービスボットに Whisper STT と Gemini を統合。音声マルチターン対話をサポート。',
+      'Python':             'バックエンド API、自動化スクリプト、AI モデル統合、Web アプリ開発に使用するメイン言語。',
+      'Web (HTML/CSS/JS)':  'レスポンシブ Web サイトをフロントエンドレイアウトとインタラクティブ効果とともに独立して構築。',
+      'MySQL':              '顧客データと AI 会話履歴を含む複数の本番データベースを設計・管理。',
+      'LINE API':           'LINE Messaging API と Webhook を接続し、インテリジェントカスタマーサービスとプッシュ通知システムを構築。',
+      'Git / GitHub':       'バージョン管理に Git を使用。GitHub Pages で静的サイトをデプロイし、協力ワークフローを管理。',
+      'n8n Workflow':       'n8n Level 1 & 2 合格。20以上のサービスを統合する企業向け自動化ワークフローを設計。',
+      'Python 自動化腳本':  'データ収集・レポート生成・バッチ API 呼び出しを自動化するスケジュールスクリプトを作成。大量の人的作業を削減。',
+      'API 整合':           'REST / Webhook 設計に精通。CRM、LINE、Azure、GCP サービス API を統合。',
+      '工作流架構設計':     'エラー処理、リトライロジック、監視アラートを含むエンドツーエンドの企業自動化プロセスを設計。',
+      '資安 AI 方案設計':   '非 AI ルールエンジンを使用したデータセキュリティ境界を設計し、機密データが LLM に露出するのを防止。',
+      '金融數據分析':       '永豊金証券データ金融部での市場データ分析・レポート作成を支援。金融 AI の実践的理解を深化。',
+      '資料合規管理':       '顧客データプロセスの最適化を支援。GDPR コンプライアンス意識とデータ最小化原則を実践。',
+      'MySQL 資料管理':     'スキーマ設計、インデックス最適化、定期バックアップ戦略を策定し、本番環境の安定稼働を確保。',
+    }
+  };
+
+  // Re-render tooltips
+  document.querySelectorAll('.skill-tooltip').forEach(tip => tip.remove());
+  const meta = metaMap[lang];
+  document.querySelectorAll('.skill-item').forEach(item => {
+    const nameEl = item.querySelector('.skill-name');
+    if (!nameEl) return;
+    const key = nameEl.textContent.trim();
+    const desc = meta[key];
+    if (!desc) return;
+    const tip = document.createElement('div');
+    tip.className = 'skill-tooltip';
+    tip.innerHTML = '<div class="skill-tooltip-title">'+key+'</div>'+desc;
+    item.appendChild(tip);
+  });
+
+  window._currentLang = lang;
+}
+
+// Init
+window._currentLang = 'zh';
+window._twTitles = [
+  'Cloud AI & Data Intelligence Engineer',
+  'Azure AI 工程師助理',
+  'n8n 自動化專家 (Lv1 & Lv2)',
+  'Python 全端開發者',
+  'AI 資安方案設計師',
+  'GCP 雲端從業者',
+];
 </script>
 </body>
 </html>
